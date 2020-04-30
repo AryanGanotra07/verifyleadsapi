@@ -1,6 +1,0 @@
-flask
-flask_restful
-Flask-JWT
-Flask-SQLAlchemy
-uwsgi
-Flask-JWT-Extended
