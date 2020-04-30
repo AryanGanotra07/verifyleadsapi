@@ -3,6 +3,11 @@ from . import db
 from ..app import bcrypt
 from marshmallow import fields, Schema
 from .EmailModel import EmailSchema
+from typing import Dict, List, Union
+from src.models.EmailModel import EmailJSON
+UserJSON = Dict[str, Union[List[EmailJSON],str, int]]
+
+
 
 
 class UserModel(db.Model):
@@ -25,25 +30,31 @@ class UserModel(db.Model):
         self.created_at = datetime.datetime.utcnow()
         self.modified_at = datetime.datetime.utcnow()
 
-    def save(self):
+    def save_to_db(self) -> None:
         db.session.add(self)
         db.session.commit()
 
-    def delete(self):
+    def delete_from_db(self) -> None:
         db.session.delete(self)
         db.session.commit()
 
     @staticmethod
-    def get_all_users():
+    def get_all_users() -> List["UserModel"]:
         return UserModel.query.all()
 
-    @staticmethod
-    def get_one_user(id):
-        return UserModel.query.get(id)
+    @classmethod
+    def find_by_username(cls, username : str) -> "UserModel":
+        user = cls.query.filter_by(username = username).first()
+        return user
+
+    @classmethod
+    def find_by_id(cls, _id : int) -> "UserModel":
+        user = cls.query.filter_by(id = _id).first()
+        return user
 
   
-    def __repr(self):
-        return '<id {}>'.format(self.id)
+    def json(self) -> UserJSON:
+        return {'id' : self.id, 'username' : self.username, 'emailleads' : [email.json() for email in self.emailleads]}
 
     def __generate_hash(self, password):
         return bcrypt.generate_password_hash(password, rounds=10).decode("utf-8")
@@ -51,6 +62,7 @@ class UserModel(db.Model):
   # add this new method
     def check_hash(self, password):
         return bcrypt.check_password_hash(self.password, password)
+
 
 
 class UserSchema(Schema):

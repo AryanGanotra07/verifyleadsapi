@@ -17,6 +17,7 @@ pyjwt = "*"
 psycopg2-binary = "*"
 flask-restful = "*"
 flask-jwt-extended = "*"
+dnspython = "*"
 
 [requires]
 python_version = "3.8"

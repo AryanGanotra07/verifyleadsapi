@@ -1,8 +1,8 @@
 from flask_restful import Resource, reqparse
 from flask import request
-from models.UserModel import UserModel
-from blacklist import BLACKLIST
-from flast_jwt_extended import get_raw_jwt, jwt_required, create_access_token, create_refresh_token,get_jwt_claims, jwt_refresh_token_required, get_jwt_identity
+from src.models.UserModel import UserModel
+from src.blacklist import BLACKLIST
+from flask_jwt_extended import get_raw_jwt, jwt_required, create_access_token, create_refresh_token,get_jwt_claims, jwt_refresh_token_required, get_jwt_identity
 
 _user_parser = reqparse.RequestParser()
 _user_parser.add_argument('username', 
@@ -18,11 +18,11 @@ _user_parser.add_argument('password',
 class UserRegister(Resource):
     
     @classmethod
-    @jwt_required
+    
     def post(cls):
-        claims = get_jwt_claims()
-        if not claims['isAdmin']:
-             return {'message' : 'Admin priviledge required'} , 401
+        # claims = get_jwt_claims()
+        # if not claims['isAdmin']:
+        #      return {'message' : 'Admin priviledge required'} , 401
         data = _user_parser.parse_args()
         user = UserModel.find_by_username(data['username'])
         if user is not None:
@@ -39,11 +39,12 @@ class User(Resource):
     def get(cls, user_id : int):
         claims = get_jwt_claims()
         if not claims['isAdmin']:
+             print("This is admin")
              return {'message' : 'Admin priviledge required'} , 401
         user = UserModel.find_by_id(user_id)
         if not user:
             return {'message', 'user not found'} , 404
-        return user;
+        return user.json();
     
     @classmethod
     @jwt_required
@@ -61,17 +62,21 @@ class UserLogin(Resource):
     
 
     @classmethod
-    def post(cls, self):
+    def post(cls):
         data = _user_parser.parse_args()
         user = UserModel.find_by_username(data['username'])
-        if user and user.password == data['password']:
+        if user and user.check_hash(data['password']):
+            print(1)
             access_token = create_access_token(identity=user.id, fresh = True)
+            print(2)
             refresh_token = create_refresh_token(user.id)
+            print(3)
             return {
                 'access_token' : access_token,
                 'refresh_token' : refresh_token
             }, 200
-        return {'message', 'Return invalid credentials'}, 401
+            print(4)
+        return {'message' : 'Return invalid credentials'}, 401
 
 
 class RefreshToken(Resource):

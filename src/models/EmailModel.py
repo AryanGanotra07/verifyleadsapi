@@ -1,7 +1,9 @@
 from . import db
 import datetime
 from marshmallow import fields, Schema
+from typing import Dict, List, Union
 
+EmailJSON = Dict[str, Union[int, str]]
 
 class EmailModel(db.Model):
     __tablename__ = "emailleads"
@@ -9,37 +11,53 @@ class EmailModel(db.Model):
     code = db.Column(db.Integer)
     domain = db.Column(db.String(128))
     email = db.Column(db.String(128),unique=True, nullable=False)
+    message = db.Column(db.String(200), nullable = False)
+    username = db.Column(db.String(200), nullable = False)
     created_at = db.Column(db.DateTime)
     modified_at = db.Column(db.DateTime)
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    def __init__(self, data):
+    def __init__(self, code,username, domain, email, message, owner_id):
         
-        self.code = data.get('code')
-        self.domain = data.get('domain')
-        self.email = data.get('email')
+        self.code = code
+        self.domain = domain
+        self.username = username
+        self.email = email
+        self.message = message
         self.created_at = datetime.datetime.utcnow()
         self.modified_at = datetime.datetime.utcnow()
-        self.owner_id = data.get('owner_id')
+        self.owner_id = owner_id
     
-    def save(self):
-        db.session.save(self)
+    def save_to_db(self) -> None:
+        db.session.add(self)
         db.session.commit()
 
-    def delete(self):
+    def delete_from_db(self) -> None:
         db.session.delete(self)
         db.session.commit()
     
     @staticmethod
-    def get_all_emails():
+    def find_all_emails() -> List["EmailModel"]:
         return EmailModel.query.all()
   
     @staticmethod
-    def get_one_email(id):
+    def find_email_by_id(id : int) -> "EmailModel":
         return EmailModel.query.get(id)
 
-    def __repr__(self):
-        return '<id {}>'.format(self.id)
+    @staticmethod
+    def find_email_by_address(email : str) -> "EmailModel":
+        print("finding email by address")
+        email = EmailModel.query.filter_by(email = email).first()
+        return email
+
+    def json(self) -> EmailJSON:
+        return {'id' : self.id,
+         'email' : self.email, 
+         'code' : self.code, 
+         'username' : self.username,
+         'domain' : self.domain,
+          'message' : self.message, 
+          "user_id" : self.owner_id}
     
 class EmailSchema(Schema):
   """
@@ -52,3 +70,4 @@ class EmailSchema(Schema):
   created_at = fields.DateTime(dump_only=True)
   modified_at = fields.DateTime(dump_only=True)
   owner_id = fields.Int(required=True)
+  message = fields.Str(required = True)

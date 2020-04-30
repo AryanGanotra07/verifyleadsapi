@@ -1,6 +1,7 @@
 from flask_restful import Resource, reqparse
 from flask_jwt_extended import jwt_required, get_jwt_claims, jwt_optional, get_jwt_identity, fresh_jwt_required
-from models.EmailModel import EmailModel
+from src.models.EmailModel import EmailModel
+from src.verifier.EmailVerifier import EmailVerifier
 #make constants for errors
 class Email(Resource):
     # parser = reqparse.RequestParser()
@@ -17,17 +18,23 @@ class Email(Resource):
     #         required = True,
     #         help = "This field cannot be left blank")
     
+    @classmethod
     @jwt_required
     #make all these class methods if they are not using self reference
-    @classmethod
-    def get(cls, email : str):
+    def get(cls, emailAddress : str):
+        print("Called b")
         claims = get_jwt_claims()
         if not claims['isAdmin']:
              return {'message' : 'Admin priviledge required'} , 401
-        email = EmailModel.find_by_name(email)
+        user_id = get_jwt_identity()
+        print("Called")
+        email = EmailModel.find_email_by_address(emailAddress)
         if email:
             return email.json()
-        return {'message' : 'Item with name {} does not exist'.format(email)}
+        response = EmailVerifier(emailAddress).verify()
+        email = EmailModel(response['code'], response ['username'],response['domain'], response['email'], response['message'],user_id)
+        email.save_to_db()
+        return response
 
 #    # @jwt_required()
 #     @fresh_jwt_required
