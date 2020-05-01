@@ -1,0 +1,13 @@
+flask
+flask-sqlalchemy
+psycopg2
+flask-migrate
+flask-script
+marshmallow 
+flask-bcrypt 
+pyjwt 
+psycopg2-binary
+flask-restful 
+flask-jwt-extended 
+dnspython 
+uwsgi
