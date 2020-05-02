@@ -11,7 +11,7 @@ from src.blacklist import BLACKLIST
 from src.resources.User import UserLogin, RefreshToken, UserRegister, UserLogout, User
 from src.resources.Email import Email
 from src.shared.Authentication import identity, authenticate
-import requests
+
 
 import os
 env_name = os.environ.get('FLASK_ENV')
@@ -32,8 +32,6 @@ def create_tables():
 from .models import UserModel, EmailModel
 api = Api(app)
 jwt = JWTManager(app)
-
-response = requests.get("https://ubtpro.com")
 
 @jwt.user_claims_loader
 def add_claims_to_jwt(identity):
@@ -79,6 +77,6 @@ def index():
   """
   example endpoint
   """
-  return render_template("home.html", content = response.content)
+  return render_template("home.html", content = "verifyleads.io")
 
 
