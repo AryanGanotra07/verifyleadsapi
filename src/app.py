@@ -77,6 +77,6 @@ def index():
   """
   example endpoint
   """
-  return render_template("home.html", content = "verifyleads.io")
+  return render_template("home.html", content = "https://verifyleads.io")
 
 
