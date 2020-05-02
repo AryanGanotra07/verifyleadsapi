@@ -1,7 +1,7 @@
 
 #src/app.py
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 
 from .config import app_config
 from .models import db, bcrypt # add this new line
@@ -76,6 +76,6 @@ def index():
   """
   example endpoint
   """
-  return 'Congratulations! Your first endpoint is workin'
+  return render_template("home.html", content = "verifyleads.io")
 
 
