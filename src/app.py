@@ -13,7 +13,7 @@ from src.resources.Email import Email
 from src.shared.Authentication import identity, authenticate
 
 import os
-env_name = os.environ.get('FLASK_ENV','production')
+env_name = os.environ.get('FLASK_ENV')
 
 
 app = Flask(__name__)
@@ -77,4 +77,5 @@ def index():
   example endpoint
   """
   return 'Congratulations! Your first endpoint is workin'
+
 

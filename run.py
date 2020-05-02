@@ -1,5 +1,8 @@
 import os
 
+#export FLASK_ENV=development
+#export DATABASE_URL=postgres://aryanganotra:Arnidara123#4@localhost:5432/email_verify_db
+#export JWT_SECRET_KEY=Arnidara123#4
 
 from src.app import app as app
 
