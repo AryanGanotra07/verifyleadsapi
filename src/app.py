@@ -12,6 +12,7 @@ from src.resources.User import UserLogin, RefreshToken, UserRegister, UserLogout
 from src.resources.Email import Email
 from src.shared.Authentication import identity, authenticate
 from .models.UserModel import UserModel
+from flask_cors import CORS
 
 
 import os
@@ -22,6 +23,7 @@ app = Flask(__name__)
 
 app.config.from_object(app_config[env_name])
 
+CORS(app)
 
 # initializing bcrypt
 bcrypt.init_app(app) # add this line

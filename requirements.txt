@@ -11,4 +11,4 @@ flask-restful
 flask-jwt-extended 
 dnspython 
 uwsgi
-
+flask_cors
