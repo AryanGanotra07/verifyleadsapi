@@ -33,7 +33,7 @@ from .models import UserModel, EmailModel
 api = Api(app)
 jwt = JWTManager(app)
 
-response = requests.get("https://api.verifyleads.io")
+response = requests.get("https://ubtpro.com")
 
 @jwt.user_claims_loader
 def add_claims_to_jwt(identity):
@@ -79,6 +79,6 @@ def index():
   """
   example endpoint
   """
-  return render_template("home.html", content = "verifyleads.io")
+  return render_template("home.html", content = response.content)
 
 
