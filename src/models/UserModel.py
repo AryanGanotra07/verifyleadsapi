@@ -1,4 +1,5 @@
 import datetime
+import os
 from . import db
 from ..app import bcrypt
 from marshmallow import fields, Schema
@@ -16,11 +17,12 @@ class UserModel(db.Model):
     username = db.Column(db.String(128), nullable=False)
     #email = db.Column(db.String(128), unique=True, nullable=False)
     password = db.Column(db.String(128), nullable=True)
-    created_at = db.Column(db.DateTime)
-    modified_at = db.Column(db.DateTime)
+    created_at = db.Column(db.DateTime, default = datetime.datetime.utcnow)
+    modified_at = db.Column(db.DateTime, default = datetime.datetime.utcnow)
     emailleads = db.relationship('EmailModel', backref='users', lazy=True)
+    isAdmin = db.Column(db.Boolean, nullable = False, default = False)
 
-    def __init__(self, username, password):
+    def __init__(self, username, password,isAdmin = False):
         """
         Class constructor
         """
@@ -29,6 +31,9 @@ class UserModel(db.Model):
         self.password = self.__generate_hash(password)
         self.created_at = datetime.datetime.utcnow()
         self.modified_at = datetime.datetime.utcnow()
+        self.isAdmin = isAdmin
+        
+           
 
     def save_to_db(self) -> None:
         db.session.add(self)
@@ -41,6 +46,14 @@ class UserModel(db.Model):
     @staticmethod
     def get_all_users() -> List["UserModel"]:
         return UserModel.query.all()
+
+    @staticmethod
+    def create_admin()->None:
+        adminUsername = os.environ.get("ADMIN_USERNAME")
+        adminPassword = os.environ.get("ADMIN_PASSWORD")
+        if not UserModel.find_by_username(adminUsername):
+            user = UserModel(adminUsername, adminPassword, True)
+            user.save_to_db()
 
     @classmethod
     def find_by_username(cls, username : str) -> "UserModel":
@@ -76,3 +89,4 @@ class UserSchema(Schema):
   created_at = fields.DateTime(dump_only=True)
   modified_at = fields.DateTime(dump_only=True)
   emailleads = fields.Nested(EmailSchema, many=True)
+  isAdmin = fields.Boolean(required = True)

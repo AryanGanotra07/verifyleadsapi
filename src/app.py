@@ -11,6 +11,7 @@ from src.blacklist import BLACKLIST
 from src.resources.User import UserLogin, RefreshToken, UserRegister, UserLogout, User
 from src.resources.Email import Email
 from src.shared.Authentication import identity, authenticate
+from .models.UserModel import UserModel
 
 
 import os
@@ -29,14 +30,22 @@ db.init_app(app) # add this line
 @app.before_first_request
 def create_tables():
   db.create_all()
+  from .models.UserModel import UserModel
+  UserModel.create_admin()
+ 
+ 
 from .models import UserModel, EmailModel
 api = Api(app)
 jwt = JWTManager(app)
 
 @jwt.user_claims_loader
 def add_claims_to_jwt(identity):
-  if identity == 1:
+  from .models.UserModel import UserModel
+  user = UserModel.find_by_id(identity)
+  if user.isAdmin:
+      print("returned is admin as true")
       return {'isAdmin' : True}
+  print("returned is admin as false")
   return {'isAdmin' : False}
 
 @jwt.token_in_blacklist_loader

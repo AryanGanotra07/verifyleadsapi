@@ -24,6 +24,7 @@ class Email(Resource):
     def get(cls, emailAddress : str):
         print("Called b")
         claims = get_jwt_claims()
+        print(claims)
         if not claims['isAdmin']:
              return {'message' : 'Admin priviledge required'} , 401
         user_id = get_jwt_identity()

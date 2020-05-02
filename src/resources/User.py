@@ -20,9 +20,9 @@ class UserRegister(Resource):
     @classmethod
     
     def post(cls):
-        # claims = get_jwt_claims()
-        # if not claims['isAdmin']:
-        #      return {'message' : 'Admin priviledge required'} , 401
+        claims = get_jwt_claims()
+        if not claims['isAdmin']:
+             return {'message' : 'Admin priviledge required'} , 401
         data = _user_parser.parse_args()
         user = UserModel.find_by_username(data['username'])
         if user is not None:
