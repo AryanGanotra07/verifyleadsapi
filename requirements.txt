@@ -11,3 +11,4 @@ flask-restful
 flask-jwt-extended 
 dnspython 
 uwsgi
+requests
