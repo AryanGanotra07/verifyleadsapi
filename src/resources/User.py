@@ -2,6 +2,7 @@ from flask_restful import Resource, reqparse
 from flask import request
 from src.models.UserModel import UserModel
 from src.blacklist import BLACKLIST
+import datetime
 from flask_jwt_extended import get_raw_jwt, jwt_required, create_access_token, create_refresh_token,get_jwt_claims, jwt_refresh_token_required, get_jwt_identity
 
 _user_parser = reqparse.RequestParser()
@@ -67,6 +68,7 @@ class UserLogin(Resource):
         user = UserModel.find_by_username(data['username'])
         if user and user.check_hash(data['password']):
             print(1)
+            expires = datetime.timedelta(days=1)
             access_token = create_access_token(identity=user.id, fresh = True)
             print(2)
             refresh_token = create_refresh_token(user.id)

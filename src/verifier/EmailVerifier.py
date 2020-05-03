@@ -4,8 +4,10 @@ import dns.resolver
 import dns.exception
 import uuid
 from src.verifier.regex_check import regex_check
+import re
 
 
+EMAIL_INVALID_RESULT = {'code':0, 'message': "Email address format is invalid. Please enter a valid email address."}
 class EmailVerifier:
 
     
@@ -15,12 +17,21 @@ class EmailVerifier:
         
     
     def verify(self):
+        
         result = {'code':0, 'message': "Unknown exception occurred. Please try again later."}
         regexVerified = regex_check(self.email)
         if (regexVerified != True):
             print("Invalid regex")
-            return {'code':0, 'message': "Email address format is invalid. Please enter a valid email address."}
-        username, domain = self.email.split('@')
+            return EMAIL_INVALID_RESULT
+        username, domain = "", ""
+        try:
+            username_domain = self._get_domain_from_email_address(self.email)
+            username = username_domain[0]
+            domain = username_domain[1]
+        except TypeError:
+            return EMAIL_INVALID_RESULT
+        except IndexError:
+            return EMAIL_INVALID_RESULT
         mail_servers = []
         try:
             mail_servers = sorted([x for x in dns.resolver.query(domain, 'MX')], key=lambda k: k.preference)
@@ -62,7 +73,10 @@ class EmailVerifier:
                             print(code_bad_email)
                             result = {"code":2, "message": 'Mail server found for domain, but the server doesn\'t allow e-mail address verification'}
             except Exception as ex:
-                pass
+                try:
+                    server.quit()
+                except Exception:
+                    pass
 
         result['email'] = self.email
         result['domain'] = domain 
@@ -70,6 +84,10 @@ class EmailVerifier:
         result['email'] = self.email
         print ('Done', result)
         return result
+
+    def _get_domain_from_email_address(self,email_address):
+            return re.search(r"(?<=@)\[?([^\[\]]+)", email_address)
+        
 
 
     # def __returnInvalidRegex(self):
