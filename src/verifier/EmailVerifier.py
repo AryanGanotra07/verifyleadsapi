@@ -38,8 +38,8 @@ class EmailVerifier:
                 result = {'code':6, 'message': str(ex)}
                 continue
             try:
-                (code, msg) = server.helo('ubtpro.com')
-                (code, msg) = server.docmd('MAIL FROM:', '<support@ubtpro.com>')
+                (code, msg) = server.helo('verifyleads.io')
+                (code, msg) = server.docmd('MAIL FROM:', '<admin@verifyleads.io>')
                 print(code,msg)
                 if 200 <= code <= 299:
                     (code, msg) = server.docmd('RCPT TO:', '<{}>'.format(self.email))
