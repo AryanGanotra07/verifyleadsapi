@@ -3,17 +3,23 @@ import smtplib
 import dns.resolver
 import dns.exception
 import uuid
+from src.verifier.regex_check import regex_check
+
 
 class EmailVerifier:
 
+    
+
     def __init__(self, email) :
         self.email = email
+        
     
     def verify(self):
-
-        result, regexVerified = self.__verifyregex()
+        result = {'code':0, 'message': "Unknown exception occurred. Please try again later."}
+        regexVerified = regex_check(self.email)
         if (regexVerified != True):
-            return result
+            print("Invalid regex")
+            return {'code':0, 'message': "Email address format is invalid. Please enter a valid email address."}
         username, domain = self.email.split('@')
         mail_servers = []
         try:
@@ -23,7 +29,7 @@ class EmailVerifier:
         except dns.resolver.NXDOMAIN as ex:
             result = {'code':4, 'message': 'Mail server not found for domain'}
         except Exception as ex:
-            result = {'code':0, 'message': 'Unknown Exception: ' + ex.message}
+            result = {'code':0, 'message': 'Unknown Exception: Please check your email format or try again later.'}
 
         for mail_server in mail_servers:
             if result['code'] not in [0, 6]:
@@ -66,9 +72,7 @@ class EmailVerifier:
         return result
 
 
-    def __verifyregex(self):
-        if '@' not in self.email:
-            resp = json.dumps({'code':0, 'message': 'Enter a valid email address'})
-            return resp, False
-        result = {'code':0, 'message': 'Unknown Exception'}
-        return result, True
+    # def __returnInvalidRegex(self):
+    #     EMAIL_REGEX_INVALID = "Email address format is invalid. Please enter a valid email address."
+    #     return json.dumps({'code':0, 'message': "Email address format is invalid. Please enter a valid email address."})
+            

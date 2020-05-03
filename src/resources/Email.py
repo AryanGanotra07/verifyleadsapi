@@ -33,8 +33,9 @@ class Email(Resource):
         if email:
             return email.json()
         response = EmailVerifier(emailAddress).verify()
-        email = EmailModel(response['code'], response ['username'],response['domain'], response['email'], response['message'],user_id)
-        email.save_to_db()
+        if response['code'] != 0:
+            email = EmailModel(response['code'], response ['username'],response['domain'], response['email'], response['message'],user_id)
+            email.save_to_db()
         return response
 
 #    # @jwt_required()
