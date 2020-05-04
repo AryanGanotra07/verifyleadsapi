@@ -30,6 +30,7 @@ class EmailVerifier:
             username_domain = self._get_domain_from_email_address(self.email)
             username = username_domain[0]
             domain = username_domain[1]
+            print(username, domain)
         except TypeError:
             return EMAIL_INVALID_RESULT
         except IndexError:
