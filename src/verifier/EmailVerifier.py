@@ -56,7 +56,7 @@ class EmailVerifier:
                 result = {'code':6, 'message': str(ex)}
                 continue
             try:
-                (code, msg) = server.helo(socket.gethostbyname())
+                (code, msg) = server.helo("verifyleads.io")
                 (code, msg) = server.docmd('MAIL FROM:', '<contact@ubtpro.com>')
                 print(code,msg)
                 if 200 <= code <= 299:
