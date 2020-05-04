@@ -5,6 +5,7 @@ import dns.exception
 import uuid
 from src.verifier.regex_check import regex_check
 import re
+import socket
 
 
 EMAIL_INVALID_RESULT = {'code':0, 'message': "Email address format is invalid. Please enter a valid email address."}
@@ -55,8 +56,8 @@ class EmailVerifier:
                 result = {'code':6, 'message': str(ex)}
                 continue
             try:
-                (code, msg) = server.helo('verifyleads.io')
-                (code, msg) = server.docmd('MAIL FROM:', '<admin@verifyleads.io>')
+                (code, msg) = server.helo(socket.gethostbyname())
+                (code, msg) = server.docmd('MAIL FROM:', '<contact@ubtpro.com>')
                 print(code,msg)
                 if 200 <= code <= 299:
                     print('<{}>'.format(self.email))
@@ -64,14 +65,19 @@ class EmailVerifier:
                     if code >= 500:
                         print(msg)
                         result = {'code':3, 'message': 'Mail server found for domain, but the email address is not valid.'}
+                    elif code == 452:
+                        result = {'code':0, 'message' : 'Too many requests'}
                     else:
-                        try_email = '<{}@{}>'.format(str(uuid.uuid4()), domain)
+                        try_email = '<{}@{}>'.format(str(uuid.uuid4())[:6], domain)
                         print("Checking for try email - ", try_email)
                         (code_bad_email, msg) = server.docmd('RCPT TO:', try_email)
                         print(code_bad_email, msg)
-                        if code == code_bad_email and 200 <= code <= 299:
+                        if code != code_bad_email and 200 <= code <= 299:
                             print(code)
                             result = {'code':1, 'message': 'Mail server indicates this is a valid email address'}
+                     
+                            
+
                         else:
                             print(code)
                             print(code_bad_email)
