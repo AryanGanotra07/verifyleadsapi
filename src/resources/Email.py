@@ -1,6 +1,7 @@
 from flask_restful import Resource, reqparse
 from flask_jwt_extended import jwt_required, get_jwt_claims, jwt_optional, get_jwt_identity, fresh_jwt_required
 from src.models.EmailModel import EmailModel
+import datetime
 from src.verifier.EmailVerifier import EmailVerifier
 #make constants for errors
 class Email(Resource):
@@ -29,13 +30,20 @@ class Email(Resource):
              return {'message' : 'Admin priviledge required'} , 401
         user_id = get_jwt_identity()
         print("Called")
-        email = EmailModel.find_email_by_address(emailAddress)
-        if email:
-            return email.json()
+        email_from_db = EmailModel.find_email_by_address(emailAddress)
+        # if email:
+        #     return email.json()
         response = EmailVerifier(emailAddress).verify()
         if response['code'] != 0:
             email = EmailModel(response['code'], response ['username'],response['domain'], response['email'], response['message'],user_id)
-            email.save_to_db()
+            if email_from_db is None:
+                email.save_to_db()
+            else:
+                email_from_db.code = response['code']
+                email_from_db.message = response['message']
+                email_from_db.modified_at = datetime.datetime.utcnow()
+                email_from_db.owner_id = user_id
+                email_from_db.save_to_db()
         return response
 
 #    # @jwt_required()
