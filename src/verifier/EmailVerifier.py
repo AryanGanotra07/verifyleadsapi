@@ -62,7 +62,7 @@ class EmailVerifier:
                     (code, msg) = server.docmd('RCPT TO:', '<{}>'.format(self.email))
                     if code >= 500:
                         print(code)
-                        result = {'code':3, 'message': 'Mail server found for domain, but the email address is not valid'}
+                        result = {'code':3, 'message': 'Mail server found for domain, but the email address is not valid. - '+msg}
                     else:
                         (code_bad_email, msg) = server.docmd('RCPT TO:', '<{}@{}>'.format(str(uuid.uuid4()), domain))
                         if code != code_bad_email and 200 <= code <= 299:
