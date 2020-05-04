@@ -56,15 +56,17 @@ class EmailVerifier:
                 result = {'code':6, 'message': str(ex)}
                 continue
             try:
-                (code, msg) = server.helo("verifyleads.io")
-                (code, msg) = server.docmd('MAIL FROM:', '<contact@ubtpro.com>')
+                (code, msg) = server.helo("api.verifyleads.io")
+                (code, msg) = server.docmd('MAIL FROM:', '<admin@verifyleads.io>')
                 print(code,msg)
                 if 200 <= code <= 299:
                     print('<{}>'.format(self.email))
                     (code, msg) = server.docmd('RCPT TO:', '<{}>'.format(self.email))
                     if code >= 500:
-                        print(code, msg)
-                        result = {'code':3, 'message': 'Mail server found for domain, but the email address is not valid.'}
+                        if code == 550 and ('blocked' or 'Blocked' in msg):
+                            result = {'code':0, 'message': 'Cannot verify this email address because of some proxy errors.'}
+                        else:
+                            result = {'code':3, 'message': 'Mail server found for domain, but the email address is not valid.'}
                     elif code == 452:
                         result = {'code':0, 'message' : 'Too many requests'}
                     else:
