@@ -6,7 +6,7 @@ import uuid
 from src.verifier.regex_check import regex_check
 import re
 import socket
-import random
+# import random
 
 
 EMAIL_INVALID_RESULT = {'code':0, 'message': "Email address format is invalid. Please enter a valid email address."}
