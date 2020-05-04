@@ -27,9 +27,9 @@ class EmailVerifier:
             return EMAIL_INVALID_RESULT
         username, domain = "", ""
         try:
-            username_domain = self._get_domain_from_email_address(self.email)
-            username = username_domain[0]
-            domain = username_domain[1]
+            username_r, domain_r = self._get_domain_from_email_address(self.email)
+            username = username_r[1]
+            domain = domain_r[1]
             print(username, domain)
         except TypeError:
             return EMAIL_INVALID_RESULT
@@ -102,7 +102,7 @@ class EmailVerifier:
         return result
 
     def _get_domain_from_email_address(self,email_address):
-            return re.search(r"(?<=@)\[?([^\[\]]+)", email_address)
+            return re.search(r"([^@]+)", email_address), re.search(r"(?<=@)\[?([^\[\]]+)", email_address)
         
 
 
