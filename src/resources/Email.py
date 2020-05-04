@@ -29,9 +29,9 @@ class Email(Resource):
              return {'message' : 'Admin priviledge required'} , 401
         user_id = get_jwt_identity()
         print("Called")
-        # email = EmailModel.find_email_by_address(emailAddress)
-        # if email:
-        #     return email.json()
+        email = EmailModel.find_email_by_address(emailAddress)
+        if email:
+            return email.json()
         response = EmailVerifier(emailAddress).verify()
         if response['code'] != 0:
             email = EmailModel(response['code'], response ['username'],response['domain'], response['email'], response['message'],user_id)
