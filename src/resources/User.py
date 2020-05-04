@@ -69,7 +69,7 @@ class UserLogin(Resource):
         if user and user.check_hash(data['password']):
             print(1)
             expires = datetime.timedelta(days=1)
-            access_token = create_access_token(identity=user.id, fresh = True)
+            access_token = create_access_token(identity=user.id, fresh = True,expires_delta=expires)
             print(2)
             refresh_token = create_refresh_token(user.id)
             print(3)

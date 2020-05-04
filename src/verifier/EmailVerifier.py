@@ -6,6 +6,7 @@ import uuid
 from src.verifier.regex_check import regex_check
 import re
 import socket
+import random
 
 
 EMAIL_INVALID_RESULT = {'code':0, 'message': "Email address format is invalid. Please enter a valid email address."}
@@ -70,16 +71,18 @@ class EmailVerifier:
                     elif code == 452:
                         result = {'code':0, 'message' : 'Too many requests'}
                     else:
-                        try_email = '<{}@{}>'.format(str(uuid.uuid4())[:6], domain)
+                        server = smtplib.SMTP(str(mail_server.exchange)[:-1])
+                        server.helo("api.verifyleads.io")
+                        server.docmd('MAIL FROM:', '<admin@verifyleads.io>')
+                        random_email = ''.join(random.sample(username,len(username)))
+                        try_email = '<{}@{}>'.format(random_email, domain)
+                        #try_email = '<{}@{}>'.format(str(uuid.uuid4())[:6], domain)
                         print("Checking for try email - ", try_email)
                         (code_bad_email, msg) = server.docmd('RCPT TO:', try_email)
                         print(code_bad_email, msg)
                         if code != code_bad_email and 200 <= code <= 299:
                             print(code)
                             result = {'code':1, 'message': 'Mail server indicates this is a valid email address'}
-                     
-                            
-
                         else:
                             print(code)
                             print(code_bad_email)
