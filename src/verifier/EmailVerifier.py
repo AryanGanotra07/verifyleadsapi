@@ -63,7 +63,7 @@ class EmailVerifier:
                     print('<{}>'.format(self.email))
                     (code, msg) = server.docmd('RCPT TO:', '<{}>'.format(self.email))
                     if code >= 500:
-                        print(msg)
+                        print(code, msg)
                         result = {'code':3, 'message': 'Mail server found for domain, but the email address is not valid.'}
                     elif code == 452:
                         result = {'code':0, 'message' : 'Too many requests'}
