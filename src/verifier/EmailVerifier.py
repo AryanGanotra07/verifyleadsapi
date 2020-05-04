@@ -59,19 +59,23 @@ class EmailVerifier:
                 (code, msg) = server.docmd('MAIL FROM:', '<admin@verifyleads.io>')
                 print(code,msg)
                 if 200 <= code <= 299:
+                    print('<{}>'.format(self.email))
                     (code, msg) = server.docmd('RCPT TO:', '<{}>'.format(self.email))
                     if code >= 500:
-                        print(code)
-                        result = {'code':3, 'message': 'Mail server found for domain, but the email address is not valid. - '+msg}
+                        print(msg)
+                        result = {'code':3, 'message': 'Mail server found for domain, but the email address is not valid.'}
                     else:
-                        (code_bad_email, msg) = server.docmd('RCPT TO:', '<{}@{}>'.format(str(uuid.uuid4()), domain))
-                        if code != code_bad_email and 200 <= code <= 299:
+                        try_email = '<{}@{}>'.format(str(uuid.uuid4()), domain)
+                        print("Checking for try email - ", try_email)
+                        (code_bad_email, msg) = server.docmd('RCPT TO:', try_email)
+                        print(code_bad_email, msg)
+                        if code == code_bad_email and 200 <= code <= 299:
                             print(code)
                             result = {'code':1, 'message': 'Mail server indicates this is a valid email address'}
                         else:
                             print(code)
                             print(code_bad_email)
-                            result = {"code":2, "message": 'Mail server found for domain, but the server doesn\'t allow e-mail address verification'}
+                            result = {"code":2, "message": 'Mail server found for domain, but this a catch-all domain. Email can be valid/invalid.'}
             except Exception as ex:
                 try:
                     server.quit()
