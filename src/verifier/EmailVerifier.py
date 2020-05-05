@@ -6,7 +6,7 @@ import uuid
 from src.verifier.regex_check import regex_check
 import re
 import socket
-# import random
+import random
 
 
 EMAIL_INVALID_RESULT = {'code':0, 'message': "Email address format is invalid. Please enter a valid email address."}
@@ -75,9 +75,11 @@ class EmailVerifier:
                         server = smtplib.SMTP(str(mail_server.exchange)[:-1])
                         server.helo("api.verifyleads.io")
                         server.docmd('MAIL FROM:', '<admin@verifyleads.io>')
-                        #random_email = ''.join(random.sample(username,len(username)))
-                        #try_email = '<{}@{}>'.format(random_email, domain)
-                        try_email = '<{}@{}>'.format(str(uuid.uuid4())[:6], domain)
+                        random_username = ''.join(random.sample(username,len(username))) +'07'
+                        if(random_username.startswith('.')):
+                            random_username += 'ar'
+                        try_email = '<{}@{}>'.format(random_username, domain)
+                        #try_email = '<{}@{}>'.format(str(uuid.uuid4())[:6], domain)
                         print("Checking for try email - ", try_email)
                         (code_bad_email, msg) = server.docmd('RCPT TO:', try_email)
                         print(code_bad_email, msg)
