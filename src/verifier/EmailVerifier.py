@@ -65,7 +65,8 @@ class EmailVerifier:
                     print('<{}>'.format(self.email))
                     (code, msg) = server.docmd('RCPT TO:', '<{}>'.format(self.email))
                     if code >= 500:
-                        if code == 550 and ('blocked' or 'Blocked' in msg):
+                        print(code, msg)
+                        if code == 550 and ('5.4.1' in str(msg)):
                             result = {'code':0, 'message': 'Cannot verify this email address because of some proxy errors.'}
                         else:
                             result = {'code':3, 'message': 'Mail server found for domain, but the email address is not valid.'}
@@ -91,6 +92,7 @@ class EmailVerifier:
                             print(code_bad_email)
                             result = {"code":2, "message": 'Mail server found for domain, but this a catch-all domain. Email can be valid/invalid.'}
             except Exception as ex:
+                print(ex)
                 try:
                     server.quit()
                 except Exception:
