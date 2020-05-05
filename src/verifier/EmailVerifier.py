@@ -74,7 +74,7 @@ class EmailVerifier:
                     else:
                         server = smtplib.SMTP(str(mail_server.exchange)[:-1])
                         server.helo("api.verifyleads.io")
-                        server.docmd('MAIL FROM:', '<aryan@verifyleads.io>')
+                        server.docmd('MAIL FROM:', '<dev@verifyleads.io>')
                         random_username = ''.join(random.sample(username,len(username))) +'07'
                         if(random_username.startswith('.')):
                             random_username += 'ar'
