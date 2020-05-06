@@ -12,3 +12,5 @@ flask-jwt-extended
 dnspython 
 uwsgi
 flask_cors
+flask-script
+flask-migrate
