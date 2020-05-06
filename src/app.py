@@ -7,13 +7,14 @@ from .config import app_config
 from .models import db, bcrypt # add this new line
 from flask_restful import Resource, Api, reqparse
 from flask_jwt_extended import JWTManager
+from flask_cors import CORS
+from dotenv import load_dotenv
+from .models.UserModel import UserModel
 from src.blacklist import BLACKLIST
 from src.resources.User import UserLogin, RefreshToken, UserRegister, UserLogout, User
 from src.resources.Email import Email
 from src.shared.Authentication import identity, authenticate
-from flask_cors import CORS
-from dotenv import load_dotenv
-from .models.UserModel import UserModel
+
 
 
 
