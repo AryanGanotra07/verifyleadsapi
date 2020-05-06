@@ -6,6 +6,7 @@ from marshmallow import fields, Schema
 from .EmailModel import EmailSchema
 from typing import Dict, List, Union
 from src.models.EmailModel import EmailJSON
+from src.helpers.dbhelper import links
 UserJSON = Dict[str, Union[List[EmailJSON],str, int]]
 
 
@@ -19,7 +20,7 @@ class UserModel(db.Model):
     password = db.Column(db.String(128), nullable=True)
     created_at = db.Column(db.DateTime, default = datetime.datetime.utcnow)
     modified_at = db.Column(db.DateTime, default = datetime.datetime.utcnow)
-    emailleads = db.relationship('EmailModel', backref='users', lazy=True)
+    emailleads = db.relationship('EmailModel',secondary = links ,backref = db.backref('users', lazy='dynamic'))
     isAdmin = db.Column(db.Boolean, nullable = False, default = False)
 
     def __init__(self, username, password,isAdmin = False):

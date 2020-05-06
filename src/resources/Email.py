@@ -1,9 +1,12 @@
 from flask_restful import Resource, reqparse
 from flask_jwt_extended import jwt_required, get_jwt_claims, jwt_optional, get_jwt_identity, fresh_jwt_required
 from src.models.EmailModel import EmailModel
+from src.models.UserModel import UserModel
 import datetime
 from src.verifier.EmailVerifier import EmailVerifier
+from src.schemas.EmailSchema import EmailSchema
 #make constants for errors
+email_schema = EmailSchema()
 class Email(Resource):
     # parser = reqparse.RequestParser()
     # parser.add_argument('code',
@@ -30,21 +33,26 @@ class Email(Resource):
              return {'message' : 'Admin priviledge required'} , 401
         user_id = get_jwt_identity()
         print("Called")
-        email_from_db = EmailModel.find_email_by_address(emailAddress)
+        
         # if email:
         #     return email.json()
         response = EmailVerifier(emailAddress).verify()
+        email = EmailModel(response['code'], response ['username'],response['domain'], response['email'], response['message'])
         if response['code'] != 0:
-            email = EmailModel(response['code'], response ['username'],response['domain'], response['email'], response['message'],user_id)
-            if email_from_db is None:
+            email_from_db = EmailModel.find_email_by_address(emailAddress)
+           
+            user = UserModel.find_by_id(user_id)
+            if email_from_db not in user.emailleads:
+                email.users.append(user)
                 email.save_to_db()
             else:
                 email_from_db.code = response['code']
                 email_from_db.message = response['message']
                 email_from_db.modified_at = datetime.datetime.utcnow()
-                email_from_db.owner_id = user_id
+                # email_from_db.owner_id = user_id
                 email_from_db.save_to_db()
-        return response
+        return (email_schema.dump(email))
+        
 
 #    # @jwt_required()
 #     @fresh_jwt_required

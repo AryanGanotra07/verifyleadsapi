@@ -15,9 +15,9 @@ class EmailModel(db.Model):
     username = db.Column(db.String(200), nullable = False)
     created_at = db.Column(db.DateTime)
     modified_at = db.Column(db.DateTime)
-    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+   # owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
-    def __init__(self, code,username, domain, email, message, owner_id):
+    def __init__(self, code,username, domain, email, message):
         
         self.code = code
         self.domain = domain
@@ -26,7 +26,7 @@ class EmailModel(db.Model):
         self.message = message
         self.created_at = datetime.datetime.utcnow()
         self.modified_at = datetime.datetime.utcnow()
-        self.owner_id = owner_id
+      #  self.owner_id = owner_id
     
     def save_to_db(self) -> None:
         db.session.add(self)
@@ -50,6 +50,11 @@ class EmailModel(db.Model):
         email = EmailModel.query.filter_by(email = email).first()
         return email
 
+    @staticmethod
+    def find_email_by_email_and_user(emailId : int, userId : int ) -> "EmailModel":
+        email = EmailModel.query.filter_by(id = emailId).filter(EmailModel.users.any(id = userId)).first()
+        return email
+
     def json(self) -> EmailJSON:
         return {'id' : self.id,
          'email' : self.email, 
@@ -69,5 +74,5 @@ class EmailSchema(Schema):
   domain = fields.Str(required=True)
   created_at = fields.DateTime(dump_only=True)
   modified_at = fields.DateTime(dump_only=True)
-  owner_id = fields.Int(required=True)
+  #owner_id = fields.Int(required=True)
   message = fields.Str(required = True)

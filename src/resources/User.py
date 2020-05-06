@@ -3,8 +3,10 @@ from flask import request
 from src.models.UserModel import UserModel
 from src.blacklist import BLACKLIST
 import datetime
+from src.schemas.UserSchema import UserSchema
 from flask_jwt_extended import get_raw_jwt, jwt_required, create_access_token, create_refresh_token,get_jwt_claims, jwt_refresh_token_required, get_jwt_identity
 
+user_schema = UserSchema()
 _user_parser = reqparse.RequestParser()
 _user_parser.add_argument('username', 
     type = str, 
@@ -19,7 +21,7 @@ _user_parser.add_argument('password',
 class UserRegister(Resource):
     
     @classmethod
-    
+    @jwt_required
     def post(cls):
         claims = get_jwt_claims()
         if not claims['isAdmin']:
@@ -29,6 +31,8 @@ class UserRegister(Resource):
         if user is not None:
             return {'message' : 'User with such username already exists'} , 400
         user = UserModel(**data)
+        # user = user_schema.load(data)
+        print(user)
         user.save_to_db()
 
         return ({'message' : 'User created successfully.'}), 201
@@ -66,6 +70,7 @@ class UserLogin(Resource):
     def post(cls):
         data = _user_parser.parse_args()
         user = UserModel.find_by_username(data['username'])
+       
         if user and user.check_hash(data['password']):
             print(1)
             expires = datetime.timedelta(days=1)

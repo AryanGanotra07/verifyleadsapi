@@ -1,4 +1,3 @@
-from marshmallow import fields, Schema
+from flask_marshmallow import Marshmallow
 
-fields = fields
-Schema = Schema
+ma = Marshmallow()

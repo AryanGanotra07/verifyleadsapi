@@ -11,10 +11,11 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 from .models.UserModel import UserModel
 from src.blacklist import BLACKLIST
-
+from src.schemas import ma
 from src.resources.User import UserLogin, RefreshToken, UserRegister, UserLogout, User
 from src.resources.Email import Email
 from src.shared.Authentication import identity, authenticate
+from src.resources.Support import Support, SupportList
 
 
 
@@ -39,6 +40,8 @@ CORS(app)
 bcrypt.init_app(app) # add this line
 
 db.init_app(app) # add this line
+ma.init_app(app)
+  
 @app.before_first_request
 def create_tables():
   db.create_all()
@@ -81,6 +84,7 @@ def expired_token_callback():
 
 
 
+ 
 
 
 api.add_resource(UserRegister, '/register')
@@ -89,6 +93,8 @@ api.add_resource(UserLogin, '/login')
 api.add_resource(RefreshToken, '/refresh')
 api.add_resource(UserLogout , '/logout')
 api.add_resource(Email,'/email/<string:emailAddress>')
+api.add_resource(Support, '/support')
+api.add_resource(SupportList, '/support/<string:query>')
 
 #####################
 # existing code remain #
