@@ -13,3 +13,4 @@ uwsgi
 flask_cors
 flask-script
 flask-migrate
+python-dotenv

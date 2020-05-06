@@ -13,9 +13,13 @@ from src.resources.Email import Email
 from src.shared.Authentication import identity, authenticate
 from .models.UserModel import UserModel
 from flask_cors import CORS
-
-
+from dotenv import load_dotenv
 import os
+
+APP_ROOT = os.path.join(os.path.dirname(__file__), '..')   # refers to application_top
+dotenv_path = os.path.join(APP_ROOT, '.env')
+load_dotenv(dotenv_path)
+
 env_name = os.environ.get('FLASK_ENV')
 
 
