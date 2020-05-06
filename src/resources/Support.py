@@ -2,6 +2,8 @@ from flask_restful import Resource, reqparse
 from flask_jwt_extended import jwt_required, get_jwt_claims, get_jwt_identity
 from src.models.SupportModel import SupportModel
 from src.schemas.SupportSchema import SupportSchema
+import requests
+from src.helpers.supportemail import sendEmail
 
 support_schema = SupportSchema(many = True)
 _support_parser = reqparse.RequestParser()
@@ -24,7 +26,9 @@ class Support(Resource):
         data = _support_parser.parse_args()
         support = SupportModel(**data)
         support.save_to_db()
-        return {"message" : "Support saved successfully"} , 201
+        sendEmail(data)
+        
+        return {"message" : "We will get back to you shortly."} , 201
     
    
     @classmethod

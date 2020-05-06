@@ -15,3 +15,4 @@ flask-script
 flask-migrate
 python-dotenv
 marshmallow-sqlalchemy
+requests
