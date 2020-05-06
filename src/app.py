@@ -12,8 +12,9 @@ from src.resources.User import UserLogin, RefreshToken, UserRegister, UserLogout
 from src.resources.Email import Email
 from src.shared.Authentication import identity, authenticate
 from .models.UserModel import UserModel
-from dotenv import load_dotenv
 from flask_cors import CORS
+from dotenv import load_dotenv
+
 
 
 import os
