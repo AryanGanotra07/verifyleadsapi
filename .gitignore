@@ -8,6 +8,5 @@ venv.bak/
 log/
 *.pyc
 __pycache__/
-run.py
 .migrations/
 .migrations
