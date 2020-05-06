@@ -9,8 +9,9 @@ from flask_restful import Resource, Api, reqparse
 from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 from dotenv import load_dotenv
-from .models.UserModel import UserModel
+
 from src.blacklist import BLACKLIST
+from .models.UserModel import UserModel
 from src.resources.User import UserLogin, RefreshToken, UserRegister, UserLogout, User
 from src.resources.Email import Email
 from src.shared.Authentication import identity, authenticate
