@@ -8,7 +8,7 @@ export ADMIN_USERNAME=adminaryan9711
 export ADMIN_PASSWORD=Arnidara123#
 """
 
-from src.app import create_app as app
+from src.app import app
 from src.app import create_socketio
 
 
@@ -18,7 +18,7 @@ from src.app import create_socketio
 
 if __name__ == '__main__':
    # add this line
-   app = app()
+   
    app.config['SECRET_KEY'] = 'secret!'
    socketio = create_socketio()
 
