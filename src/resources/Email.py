@@ -125,10 +125,12 @@ class EmailFinder(Resource):
         if (first_name is None or last_name is None or domain is None):
             return {"message" : "Field's can't be empty"}
         response = EmailVerifier.emailFinder(first_name, last_name, domain)
+        if (response['code'] != 1 or response['code'] != 2):
+            return response
         email = EmailModel(response['code'], response ['username'],response['domain'], response['email'], response['message'])
         email.f_name = first_name
         email.l_name = last_name
         from src.resources.Tasks import save_email_to_db
         save_email_to_db.delay(response, user_id)
-        return (email_schema.dump(email))
+        return (email_schema.dump(email)) , 201
         

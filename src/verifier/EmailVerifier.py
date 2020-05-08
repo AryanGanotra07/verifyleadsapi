@@ -127,6 +127,9 @@ class EmailVerifier:
                 response['f_name'] = f_name
                 response['l_name'] = l_name
                 return response
+            if (response['code'] == 0):
+                return response
+        return {"code" : 0, "message" : "Sorry, can't lookup any."} , 201
                 
 
     @staticmethod
