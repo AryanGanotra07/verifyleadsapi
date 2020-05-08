@@ -124,7 +124,7 @@ class EmailFinder(Resource):
         #     return email.json()
         if (first_name is None or last_name is None or domain is None):
             return {"message" : "Field's can't be empty"}
-        response = EmailVerifier.emailFinder(first_name, last_name, domain)
+        response = EmailVerifier.emailFinder(first_name.lower(), last_name.lower(), domain.lower())
         if (response['code'] != 1 or response['code'] != 2):
             return response
         email = EmailModel(response['code'], response ['username'],response['domain'], response['email'], response['message'])
