@@ -1,4 +1,4 @@
-from . import ma
+from src.extensions import ma
 from src.models.UserModel import UserModel
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema, auto_field
 class UserSchema(SQLAlchemyAutoSchema):

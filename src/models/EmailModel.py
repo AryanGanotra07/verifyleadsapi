@@ -1,4 +1,4 @@
-from . import db
+from src.extensions import db
 import datetime
 from marshmallow import fields, Schema
 from typing import Dict, List, Union

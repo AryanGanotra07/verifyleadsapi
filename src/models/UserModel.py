@@ -1,7 +1,7 @@
 import datetime
 import os
-from . import db
-from ..app import bcrypt
+from src.extensions import db
+from src.extensions import bcrypt
 from marshmallow import fields, Schema
 from .EmailModel import EmailSchema
 from typing import Dict, List, Union

@@ -3,7 +3,12 @@ from flask_jwt_extended import jwt_required, get_jwt_claims, get_jwt_identity
 from src.models.SupportModel import SupportModel
 from src.schemas.SupportSchema import SupportSchema
 import requests
-from src.helpers.supportemail import sendEmail
+
+# from src.extensions import celery
+from src.extensions import socketio
+
+
+
 
 support_schema = SupportSchema(many = True)
 _support_parser = reqparse.RequestParser()
@@ -20,13 +25,30 @@ _support_parser.add_argument('message',
     required = True,
     help = "This field cannot be blank")
 
+# @celery.task(name='tasks.async_send_email')
+# def async_send_email(data):
+#     print("called")
+#     sendEmail(data)
+#     print("Executed")
+    
+
+@socketio.on('message')
+def handle_message(message):
+    print('received message: ' + message)
+
 class Support(Resource):
+
+   
+
     @classmethod
     def post(cls):
+        
         data = _support_parser.parse_args()
-        support = SupportModel(**data)
-        support.save_to_db()
-        sendEmail(data)
+        
+        from src.resources.Tasks import async_send_email
+        async_send_email.delay(data)
+        #async_send_email.apply_async(data)
+        #sendEmail(data)
         
         return {"message" : "We will get back to you shortly."} , 201
     

@@ -16,3 +16,6 @@ flask-migrate
 python-dotenv
 marshmallow-sqlalchemy
 requests
+flask-socketio
+celery
+# redis

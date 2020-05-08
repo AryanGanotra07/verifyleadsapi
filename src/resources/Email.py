@@ -38,19 +38,8 @@ class Email(Resource):
         #     return email.json()
         response = EmailVerifier(emailAddress).verify()
         email = EmailModel(response['code'], response ['username'],response['domain'], response['email'], response['message'])
-        if response['code'] != 0:
-            email_from_db = EmailModel.find_email_by_address(emailAddress)
-           
-            user = UserModel.find_by_id(user_id)
-            if email_from_db not in user.emailleads:
-                email.users.append(user)
-                email.save_to_db()
-            else:
-                email_from_db.code = response['code']
-                email_from_db.message = response['message']
-                email_from_db.modified_at = datetime.datetime.utcnow()
-                # email_from_db.owner_id = user_id
-                email_from_db.save_to_db()
+        from src.resources.Tasks import save_email_to_db
+        save_email_to_db.delay(response, user_id)
         return (email_schema.dump(email))
         
 
