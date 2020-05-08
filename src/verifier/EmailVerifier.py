@@ -58,8 +58,8 @@ class EmailVerifier:
                 result = {'code':6, 'message': str(ex)}
                 continue
             try:
-                (code, msg) = server.helo("ubtpro.com")
-                (code, msg) = server.docmd('MAIL FROM:', '<contact@ubtpro.com>')
+                (code, msg) = server.helo("api.verifyleads.io")
+                (code, msg) = server.docmd('MAIL FROM:', '<admin@verifyleads.io>')
                 print(code,msg)
                 if 200 <= code <= 299:
                     print('<{}>'.format(email))
@@ -74,8 +74,8 @@ class EmailVerifier:
                         result = {'code':0, 'message' : 'Too many requests'}
                     else:
                         server = smtplib.SMTP(str(mail_server.exchange)[:-1])
-                        server.helo("ubtpro.com")
-                        server.docmd('MAIL FROM:', '<support@ubtpro.com>')
+                        server.helo("api.verifyleads.io")
+                        server.docmd('MAIL FROM:', '<dev@verifyleads.io>')
                         random_username = ''.join(random.sample(username,len(username))) +'07'
                         if(random_username.startswith('.')):
                             random_username += 'ar'
@@ -129,7 +129,7 @@ class EmailVerifier:
                 return response
             if (response['code'] == 0):
                 return response
-        return {"code" : 0, "message" : "Sorry, can't lookup any."} , 201
+        return json.dumps({'code' : 0, 'message' : "Sorry, can't lookup any."}) , 201
                 
 
     @staticmethod
