@@ -1,4 +1,4 @@
-from flask_restful import Resource, reqparse
+from flask_restful import Resource, reqparse, request
 from flask_jwt_extended import jwt_required, get_jwt_claims, jwt_optional, get_jwt_identity, fresh_jwt_required
 from src.models.EmailModel import EmailModel
 from src.models.UserModel import UserModel
@@ -36,12 +36,13 @@ class Email(Resource):
         
         # if email:
         #     return email.json()
-        response = EmailVerifier(emailAddress).verify()
+        response = EmailVerifier.verify(emailAddress)
         email = EmailModel(response['code'], response ['username'],response['domain'], response['email'], response['message'])
         from src.resources.Tasks import save_email_to_db
         save_email_to_db.delay(response, user_id)
         return (email_schema.dump(email))
-        
+    
+   
 
 #    # @jwt_required()
 #     @fresh_jwt_required
@@ -100,3 +101,34 @@ class Email(Resource):
 #         if user_id:
 #             return {'items' : [item.json for item in ItemModel.find_all()]} , 200
 #         return {'items' : [item.json for item in ItemModel.find_all()]} , 200
+
+
+class EmailFinder(Resource):
+    @classmethod
+    @jwt_required
+    def get(cls):
+        first_name = request.args.get('fname')
+        last_name = request.args.get('lname')
+        domain = request.args.get('domain')
+        print(first_name, last_name, domain)
+
+        print("Called b2")
+        claims = get_jwt_claims()
+        print(claims)
+        if not claims['isAdmin']:
+             return {'message' : 'Admin priviledge required'} , 401
+        user_id = get_jwt_identity()
+        print("Called")
+        
+        # if email:
+        #     return email.json()
+        if (first_name is None or last_name is None or domain is None):
+            return {"message" : "Field's can't be empty"}
+        response = EmailVerifier.emailFinder(first_name, last_name, domain)
+        email = EmailModel(response['code'], response ['username'],response['domain'], response['email'], response['message'])
+        email.f_name = first_name
+        email.l_name = last_name
+        from src.resources.Tasks import save_email_to_db
+        save_email_to_db.delay(response, user_id)
+        return (email_schema.dump(email))
+        

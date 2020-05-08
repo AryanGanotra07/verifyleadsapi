@@ -9,7 +9,8 @@ export ADMIN_PASSWORD=Arnidara123#
 """
 
 from src.app import app
-from src.app import create_socketio
+# from src.app import socketio
+# from src.app import create_socketio
 
 
 
@@ -20,8 +21,9 @@ if __name__ == '__main__':
    # add this line
    
    app.config['SECRET_KEY'] = 'secret!'
-   socketio = create_socketio()
+   
+   
 
    
-#   app.run(host='0.0.0.0')
-   socketio.run(app, host='0.0.0.0')
+   app.run(host='0.0.0.0')
+   # socketio.run(app, host='0.0.0.0')

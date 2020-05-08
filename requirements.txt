@@ -19,3 +19,4 @@ requests
 flask-socketio
 celery
 redis
+eventlet

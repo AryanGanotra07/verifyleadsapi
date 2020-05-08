@@ -5,7 +5,7 @@ from src.schemas.SupportSchema import SupportSchema
 import requests
 
 # from src.extensions import celery
-from src.extensions import socketio
+
 
 
 
@@ -32,9 +32,9 @@ _support_parser.add_argument('message',
 #     print("Executed")
     
 
-@socketio.on('message')
-def handle_message(message):
-    print('received message: ' + message)
+# @socketio.on('message')
+# def handle_message(message):
+#     print('received message: ' + message)
 
 class Support(Resource):
 

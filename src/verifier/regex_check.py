@@ -40,6 +40,14 @@ DOMAIN = r'(?:' + DOT_ATOM + r'|' + \
 ADDR_SPEC = LOCAL_PART + r'@' + DOMAIN               # see 3.4.1
 VALID_ADDRESS_REGEXP = '^' + ADDR_SPEC + '$'
 
+NAME_REGEX=r'([a-zA-Z])'
+
+# Regex for domain
+DOMAIN_regex = re.compile(r'''(
+[a-zA-Z0-9.-]+         # second-level domain
+(\.[a-zA-Z]{2,})       # top-level domain
+)''', re.VERBOSE)
+
 
 def regex_check(email_address):
     if any(ord(char) > 127 for char in email_address):
@@ -47,3 +55,14 @@ def regex_check(email_address):
     if re.match(VALID_ADDRESS_REGEXP, email_address):
         return True
     return False
+
+def regex_check_name(name):
+    if re.match(NAME_REGEX, name):
+        return True
+    return False
+
+def regex_check_domain(domain):
+    if re.match(DOMAIN_regex, domain):
+        return True
+    return False
+
