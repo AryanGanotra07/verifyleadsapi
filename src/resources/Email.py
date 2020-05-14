@@ -125,11 +125,11 @@ class EmailFinder(Resource):
         if (first_name is None or last_name is None or domain is None):
             return {"message" : "Field's can't be empty"}
         response = EmailVerifier.emailFinder(first_name.lower(), last_name.lower(), domain.lower())
-        try:
-            if (response['code'] != 1 or response['code'] != 2):
-                return response
-        except:
-            return {'code' : 0, 'message' : "Sorry, unable to lookup any emails."}
+        # try:
+        #     if (response['code'] != 1 or response['code'] != 2):
+        #         return response
+        # except:
+        #     return {'code' : 0, 'message' : "Sorry, unable to lookup any emails."}
         email = EmailModel(response['code'], response ['username'],response['domain'], response['email'], response['message'])
         email.f_name = first_name
         email.l_name = last_name

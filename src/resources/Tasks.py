@@ -17,7 +17,7 @@ def async_send_email(data):
     sendEmail(data)
     print("Executed")
 
-@celery.task(name='tasks.async_save_to_db')
+@celery.task(name='tasks.save_email_to_db')
 def save_email_to_db(response, user_id):
     if response['code'] != 0:
         email = EmailModel(response['code'], response ['username'],response['domain'], response['email'], response['message'])
