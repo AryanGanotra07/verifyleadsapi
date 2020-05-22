@@ -7,7 +7,9 @@ from src.verifier.regex_check import regex_check, regex_check_name, regex_check_
 import re
 import socket
 import random
+import socks
 
+#celery -A src.resources.Tasks.celery worker --loglevel=DEBUG
 
 EMAIL_INVALID_RESULT = {'code':0, 'message': "Email address format is invalid. Please enter a valid email address."}
 class EmailVerifier:
@@ -19,7 +21,8 @@ class EmailVerifier:
         
     @staticmethod
     def verify(email):
-        
+        socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "localhost",8123)
+        socks.wrapmodule(smtplib)
         result = {'code':0, 'message': "Unknown exception occurred. Please try again later."}
         regexVerified = regex_check(email)
         if (regexVerified != True):
@@ -51,7 +54,7 @@ class EmailVerifier:
 
             print('Attempting to connect to ' + str(mail_server.exchange)[:-1])
             try:
-                server = smtplib.SMTP(str(mail_server.exchange)[:-1])
+                server = smtplib.SMTP(str(mail_server.exchange)[:-1], timeout= 36000)
                 #server.connect(str(mail_server.exchange)[:-1], 435)
                 #server.login("aryanganotra7@gmail.com", "Arnidara123#")
             except Exception as ex:

@@ -20,3 +20,4 @@ flask-socketio
 celery
 redis
 eventlet
+pysocks
