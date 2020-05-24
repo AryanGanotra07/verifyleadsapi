@@ -21,7 +21,7 @@ class EmailVerifier:
         
     @staticmethod
     def verify(email):
-        socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "localhost",8123)
+        socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "localhost",1080)
         socks.wrapmodule(smtplib)
         result = {'code':0, 'message': "Unknown exception occurred. Please try again later."}
         regexVerified = regex_check(email)
