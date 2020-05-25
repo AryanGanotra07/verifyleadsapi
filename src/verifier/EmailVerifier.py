@@ -1,5 +1,5 @@
 import json
-import smtplib
+import src.smtp.mysmtp as smtplib
 import dns.resolver
 import dns.exception
 import uuid
@@ -21,7 +21,7 @@ class EmailVerifier:
         
     @staticmethod
     def verify(email):
-        # socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "localhost",8123)
+        # socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "localhost", 4444)
         # socks.wrapmodule(smtplib)
         result = {'code':0, 'message': "Unknown exception occurred. Please try again later."}
         regexVerified = regex_check(email)
@@ -54,7 +54,7 @@ class EmailVerifier:
 
             print('Attempting to connect to ' + str(mail_server.exchange)[:-1])
             try:
-                server = smtplib.SMTP(str(mail_server.exchange)[:-1], timeout= 36000)
+                server = smtplib.SMTP(str(mail_server.exchange)[:-1], timeout= 3600)
                 #server.connect(str(mail_server.exchange)[:-1], 435)
                 #server.login("aryanganotra7@gmail.com", "Arnidara123#")
             except Exception as ex:
