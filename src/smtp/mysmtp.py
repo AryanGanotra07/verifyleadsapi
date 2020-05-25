@@ -228,7 +228,7 @@ class SMTP:
 
     def __init__(self, host='', port=0, local_hostname=None,
                  timeout=socket._GLOBAL_DEFAULT_TIMEOUT,
-                 source_address=None):
+                 source_address=None, proxy = None):
         """Initialize a new instance.
 
         If specified, `host' is the name of the remote host to which to
@@ -249,6 +249,8 @@ class SMTP:
         self.esmtp_features = {}
         self.command_encoding = 'ascii'
         self.source_address = source_address
+        self.proxy = proxy
+        
 
         if host:
             (code, msg) = self.connect(host, port)
@@ -308,8 +310,15 @@ class SMTP:
             self._print_debug('connect: to', (host, port), self.source_address)
         # return socket.create_connection((host, port), timeout,
         #                                 self.source_address)
-        return socks.create_connection((host, port), timeout,self.source_address , socks.SOCKS5, 
-        "localhost", 4444)
+        s = None
+        if self.proxy and self.proxy.port:
+            s = socks.create_connection((host, port), timeout,self.source_address , socks.SOCKS5, 
+            "localhost", self.proxy.port)
+        else:
+            s = socket.create_connection((host, port), timeout,
+                                        self.source_address)
+        
+        return s
 
     def connect(self, host='localhost', port=0, source_address=None):
         """Connect to a host on a given port.
@@ -325,6 +334,7 @@ class SMTP:
 
         if source_address:
             self.source_address = source_address
+        
 
         if not port and (host.find(':') == host.rfind(':')):
             i = host.rfind(':')

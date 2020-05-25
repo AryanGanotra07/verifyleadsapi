@@ -8,21 +8,26 @@ import re
 import socket
 import random
 import socks
+from src.verifier.proxies import proxies
 
 #celery -A src.resources.Tasks.celery worker --loglevel=DEBUG
 
+
+
+
 EMAIL_INVALID_RESULT = {'code':0, 'message': "Email address format is invalid. Please enter a valid email address."}
 class EmailVerifier:
-
     
 
     def __init__(self, email) :
         self.email = email
         
+        
     @staticmethod
     def verify(email):
         # socks.setdefaultproxy(socks.PROXY_TYPE_SOCKS5, "localhost", 4444)
         # socks.wrapmodule(smtplib)
+       
         result = {'code':0, 'message': "Unknown exception occurred. Please try again later."}
         regexVerified = regex_check(email)
         if (regexVerified != True):
@@ -41,6 +46,10 @@ class EmailVerifier:
         mail_servers = []
         try:
             mail_servers = sorted([x for x in dns.resolver.query(domain, 'MX')], key=lambda k: k.preference)
+            ran_proxy = random.randrange(0, len(proxies))
+            print(ran_proxy)
+            proxy = proxies[ran_proxy]
+           
         except dns.exception.Timeout as ex:
             result = {'code':5, 'message': 'DNS Lookup Timeout', }
         except dns.resolver.NXDOMAIN as ex:
@@ -54,15 +63,17 @@ class EmailVerifier:
 
             print('Attempting to connect to ' + str(mail_server.exchange)[:-1])
             try:
-                server = smtplib.SMTP(str(mail_server.exchange)[:-1], timeout= 3600)
+               
+               
+                server = smtplib.SMTP(str(mail_server.exchange)[:-1], timeout= 3600, proxy = proxy )
                 #server.connect(str(mail_server.exchange)[:-1], 435)
                 #server.login("aryanganotra7@gmail.com", "Arnidara123#")
             except Exception as ex:
                 result = {'code':6, 'message': str(ex)}
                 continue
             try:
-                (code, msg) = server.helo("api.verifyleads.io")
-                (code, msg) = server.docmd('MAIL FROM:', '<admin@verifyleads.io>')
+                (code, msg) = server.helo(server.proxy.domain)
+                (code, msg) = server.docmd('MAIL FROM:', '<{}>'.format(server.proxy.email))
                 print(code,msg)
                 if 200 <= code <= 299:
                     print('<{}>'.format(email))
