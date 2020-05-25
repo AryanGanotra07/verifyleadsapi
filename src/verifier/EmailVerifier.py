@@ -46,9 +46,7 @@ class EmailVerifier:
         mail_servers = []
         try:
             mail_servers = sorted([x for x in dns.resolver.query(domain, 'MX')], key=lambda k: k.preference)
-            ran_proxy = random.randrange(0, len(proxies))
-            print(ran_proxy)
-            proxy = proxies[ran_proxy]
+            
            
         except dns.exception.Timeout as ex:
             result = {'code':5, 'message': 'DNS Lookup Timeout', }
@@ -64,7 +62,9 @@ class EmailVerifier:
             print('Attempting to connect to ' + str(mail_server.exchange)[:-1])
             try:
                
-               
+                ran_proxy = random.randrange(0, len(proxies))
+                print(ran_proxy)
+                proxy = proxies[ran_proxy]
                 server = smtplib.SMTP(str(mail_server.exchange)[:-1], timeout= 3600, proxy = proxy )
                 #server.connect(str(mail_server.exchange)[:-1], 435)
                 #server.login("aryanganotra7@gmail.com", "Arnidara123#")
