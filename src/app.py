@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 from src.blacklist import BLACKLIST
 # from src.schemas import ma
 from src.resources.User import UserLogin, RefreshToken, UserRegister, UserLogout, User
-from src.resources.Email import Email, EmailFinder
+from src.resources.Email import Email, EmailFinder, EmailList
 from src.shared.Authentication import identity, authenticate
 from src.resources.Support import Support, SupportList
 from src.extensions import db, bcrypt, ma, socketio
@@ -104,6 +104,7 @@ def create_app():
   api.add_resource(EmailFinder,'/email')
   api.add_resource(Support, '/support')
   api.add_resource(SupportList, '/support/<string:query>')
+  api.add_resource(EmailList, '/email/all')
 
   #####################
   # existing code remain #

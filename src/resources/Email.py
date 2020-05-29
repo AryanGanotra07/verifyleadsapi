@@ -7,6 +7,7 @@ from src.verifier.EmailVerifier import EmailVerifier
 from src.schemas.EmailSchema import EmailSchema
 #make constants for errors
 email_schema = EmailSchema()
+email_all_schema = EmailSchema(many=True)
 class Email(Resource):
     # parser = reqparse.RequestParser()
     # parser.add_argument('code',
@@ -82,25 +83,17 @@ class Email(Resource):
 
 
 
-# class ItemList(Resource) :
-#     #@jwt_required()
-#     @jwt_optional
-#     def get(self):
-#         # connection = sqlite3.connect("data.db")
-#         # cursor = connection.cursor()
-#         # query = "SELECT * FROM items"
-#         # result = cursor.execute(query)
-#         # items = []
-#         # for row in result:
-#         #     items.append({
-#         #         'name' : row[0],
-#         #         'price' : row[1]
-#         #     })
-#         # connection.close()
-#         user_id = get_jwt_identity()
-#         if user_id:
-#             return {'items' : [item.json for item in ItemModel.find_all()]} , 200
-#         return {'items' : [item.json for item in ItemModel.find_all()]} , 200
+class EmailList(Resource) :
+    #@jwt_required()
+    @classmethod
+    @jwt_required
+    def get(cls):
+        claims = get_jwt_claims()
+        if not claims['isAdmin']:
+            return {'message' : 'Admin priviledge required'} , 401
+        all_emails = EmailModel.find_all_emails()
+        return email_all_schema.dump(all_emails), 201
+        
 
 
 class EmailFinder(Resource):
