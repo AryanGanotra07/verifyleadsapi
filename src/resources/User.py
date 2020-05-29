@@ -80,7 +80,8 @@ class UserLogin(Resource):
             print(3)
             return {
                 'access_token' : access_token,
-                'refresh_token' : refresh_token
+                'refresh_token' : refresh_token,
+                'admin' : user.isAdmin
             }, 200
             print(4)
         return {'message' : 'Return invalid credentials'}, 401
