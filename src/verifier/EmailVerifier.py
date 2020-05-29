@@ -64,7 +64,7 @@ class EmailVerifier:
                
                 ran_proxy = random.randrange(0, len(proxies))
                 print(ran_proxy)
-                proxy = proxies[ran_proxy]
+                proxy = proxies[0]
                 server = smtplib.SMTP(str(mail_server.exchange)[:-1], timeout= 3600, proxy = proxy )
                 #server.connect(str(mail_server.exchange)[:-1], 435)
                 #server.login("aryanganotra7@gmail.com", "Arnidara123#")
@@ -131,20 +131,20 @@ class EmailVerifier:
         l_name_regex_verified = regex_check_name(l_name)
         domain_regex_verified = regex_check_domain(domain)
         if (f_name_regex_verified != True):
-            return {"code" : 0, "message" : "Please enter valid first name"}
+            return {"code" : -1, "message" : "Please enter valid first name"}
         if (l_name_regex_verified != True):
-            return {"code" : 0, "message" : "Please enter valid last name"}
+            return {"code" : -1, "message" : "Please enter valid last name"}
         if (domain_regex_verified != True):
-            return {"code" : 0, "message" : "Please enter valid domain name"}
+            return {"code" : -1, "message" : "Please enter valid domain name"}
         for email in EmailVerifier._getList(f_name, l_name, domain):
             response = EmailVerifier.verify(email)
             if (response['code'] == 1 or response['code'] == 2):
                 response['f_name'] = f_name
                 response['l_name'] = l_name
                 return response
-            if (response['code'] == 0):
-                return response
-        return json.dumps({'code' : 0, 'message' : "Sorry, can't lookup any."}) , 201
+        response['message'] = 'Sorry, could not look for any email'
+        response['email'] = ''
+        return response 
                 
 
     @staticmethod
