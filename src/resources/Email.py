@@ -91,6 +91,7 @@ class EmailList(Resource) :
         claims = get_jwt_claims()
         if not claims['isAdmin']:
             return {'message' : 'Admin priviledge required'} , 401
+        query = request.args.get('query')
         all_emails = EmailModel.find_all_emails()
         return email_all_schema.dump(all_emails), 201
         

@@ -18,6 +18,7 @@ class EmailModel(db.Model):
     f_name = db.Column(db.String(128))
     l_name = db.Column(db.String(128))
     m_name = db.Column(db.String(128))
+    
    # owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
 
     def __init__(self, code,username, domain, email, message):
