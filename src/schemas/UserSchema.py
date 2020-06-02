@@ -1,10 +1,12 @@
 from src.extensions import ma
 from src.models.UserModel import UserModel
-from marshmallow_sqlalchemy import SQLAlchemyAutoSchema, auto_field
+from marshmallow_sqlalchemy import SQLAlchemyAutoSchema, auto_field,fields
+from src.schemas.EmailSchema import EmailSchema
 class UserSchema(SQLAlchemyAutoSchema):
   class Meta:
     model = UserModel
   password = auto_field(load_only = True)
+  # emailleads = fields.Nested(EmailSchema, many = True)
   """
   User Schema
   """

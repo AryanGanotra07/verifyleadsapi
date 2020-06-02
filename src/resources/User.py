@@ -7,6 +7,7 @@ from src.schemas.UserSchema import UserSchema
 from flask_jwt_extended import get_raw_jwt, jwt_required, create_access_token, create_refresh_token,get_jwt_claims, jwt_refresh_token_required, get_jwt_identity
 
 user_schema = UserSchema()
+user_many_schema = UserSchema(many = True)
 _user_parser = reqparse.RequestParser()
 _user_parser.add_argument('username', 
     type = str, 
@@ -78,10 +79,13 @@ class UserLogin(Resource):
             print(2)
             refresh_token = create_refresh_token(user.id)
             print(3)
+            recents = UserModel.get_recent_accounts()
             return {
                 'access_token' : access_token,
                 'refresh_token' : refresh_token,
-                'admin' : user.isAdmin
+                'user' : user_schema.dump(user),
+                # 'recents' : user_many_schema.dump(recents)
+
             }, 200
             print(4)
         return {'message' : 'Return invalid credentials'}, 401

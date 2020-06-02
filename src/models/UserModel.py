@@ -17,10 +17,13 @@ class UserModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(128), nullable=False)
     #email = db.Column(db.String(128), unique=True, nullable=False)
-    password = db.Column(db.String(128), nullable=True)
-    created_at = db.Column(db.DateTime, default = datetime.datetime.utcnow)
+    password = db.Column(db.String(128), nullable=False)
+    created_at = db.Column(db.DateTime, default = datetime.datetime.now().date())
     modified_at = db.Column(db.DateTime, default = datetime.datetime.utcnow)
-    emailleads = db.relationship('EmailModel',secondary = links ,backref = db.backref('users', lazy='dynamic'))
+    imgUrl = db.Column(db.String(128), default = None, nullable = True)
+    company = db.Column(db.String(128), default = None, nullable = True)
+    email = db.Column(db.String(128), default = "sample")
+    emailleads = db.relationship('EmailModel',secondary = links ,backref = db.backref('users', lazy=True))
     isAdmin = db.Column(db.Boolean, nullable = False, default = False)
 
     def __init__(self, username, password,isAdmin = False):
@@ -47,6 +50,14 @@ class UserModel(db.Model):
     @staticmethod
     def get_all_users() -> List["UserModel"]:
         return UserModel.query.all()
+    
+    @staticmethod
+    def get_recent_accounts() -> List["UserModel"]:
+        current_date = datetime.datetime.utcnow()
+        from_date = current_date - datetime.timedelta(days = 7)
+        recents = UserModel.query.with_entities(UserModel.created_at).filter(UserModel.created_at >= from_date).all()
+        return recents
+
 
     @staticmethod
     def create_admin()->None:
@@ -68,7 +79,7 @@ class UserModel(db.Model):
 
   
     def json(self) -> UserJSON:
-        return {'id' : self.id, 'username' : self.username, 'emailleads' : [email.json() for email in self.emailleads]}
+        return {'id' : self.id, 'username' : self.username}
 
     def __generate_hash(self, password):
         return bcrypt.generate_password_hash(password, rounds=10).decode("utf-8")

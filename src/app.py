@@ -20,6 +20,8 @@ from flask_socketio import SocketIO,send
 
 import os
 
+#celery -A src.resources.Tasks.celery worker --loglevel=DEBUG
+
 def create_app():
 
 
