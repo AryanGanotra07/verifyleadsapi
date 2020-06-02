@@ -20,7 +20,7 @@ from flask_socketio import SocketIO,send
 
 import os
 
-#celery -A src.resources.Tasks.celery worker --loglevel=DEBUG
+#
 
 def create_app():
 
@@ -32,8 +32,8 @@ def create_app():
 
   env_name = os.environ.get('FLASK_ENV')
 
-
-  app = Flask(__name__)
+  print(os.path.join(os.getcwd(),'src','static'))
+  app = Flask(__name__, static_folder=os.path.join(os.getcwd(),'src','static'), static_url_path='/static')
 
   app.config.from_object(app_config[env_name])
 

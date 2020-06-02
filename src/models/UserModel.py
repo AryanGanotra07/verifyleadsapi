@@ -16,6 +16,8 @@ class UserModel(db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(128), nullable=False)
+    f_name = db.Column(db.String(128), nullable = True)
+    l_name = db.Column(db.String(128), nullable = True)
     #email = db.Column(db.String(128), unique=True, nullable=False)
     password = db.Column(db.String(128), nullable=False)
     created_at = db.Column(db.DateTime, default = datetime.datetime.now().date())
@@ -41,6 +43,9 @@ class UserModel(db.Model):
 
     def save_to_db(self) -> None:
         db.session.add(self)
+        db.session.commit()
+    
+    def update(self) -> None:
         db.session.commit()
 
     def delete_from_db(self) -> None:
