@@ -3,7 +3,7 @@ from flask import request
 from src.models.UserModel import UserModel
 from src.blacklist import BLACKLIST
 import datetime
-import base64
+from src.helpers.imageSaver import upload_to_aws
 from src.schemas.UserSchema import UserSchema
 from flask_jwt_extended import get_raw_jwt, jwt_required, create_access_token, create_refresh_token,get_jwt_claims, jwt_refresh_token_required, get_jwt_identity
 
@@ -84,9 +84,12 @@ class User(Resource):
             return {'message' : 'User do not exist'}, 400
         data = _user_details_parser.parse_args()
         imgUrl = data['imgUrl']
-        with open("../static/imageToSave.png", "wb") as fh:
-            fh.write(base64.b64decode(imgUrl))
-        return {'message' : "Recieved image"} , 201
+        resp = upload_to_aws(imgUrl, str(user.id)) 
+        if (resp['code'] == 1):
+            user.imgUrl = resp['imgUrl']
+            user.update()
+            return resp, 201
+        return resp, 400
         
         
 

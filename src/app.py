@@ -1,7 +1,7 @@
 
 #src/app.py
 
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template,send_from_directory
 
 from src.config import app_config
 # from src.models import db, bcrypt # add this new line
@@ -33,7 +33,7 @@ def create_app():
   env_name = os.environ.get('FLASK_ENV')
 
   print(os.path.join(os.getcwd(),'src','static'))
-  app = Flask(__name__, static_folder=os.path.join(os.getcwd(),'src','static'), static_url_path='/static')
+  app = Flask(__name__,static_url_path='/static')
 
   app.config.from_object(app_config[env_name])
 
@@ -111,6 +111,10 @@ def create_app():
   #####################
   # existing code remain #
   ######################
+ 
+  @app.route('/static/<path:path>')
+  def send_js(path):
+    return send_from_directory('static', path)
   @app.route('/', methods=['GET'])
   def index():
     """
@@ -118,6 +122,9 @@ def create_app():
     """
     return render_template("home.html", content = "https://verifyleads.io")
   return app
+
+ 
+
 
 def extensions(app):
   bcrypt.init_app(app) # add this line
