@@ -20,8 +20,8 @@ _user_parser.add_argument('password',
     help = "This field cannot be blank")
 _user_parser.add_argument('email', 
     type = str, 
-    required = True,
-    help = "This field cannot be blank")
+    required = False,
+    help = "This field can be blank for login")
 
 _user_details_parser = reqparse.RequestParser()
 _user_details_parser.add_argument('imgUrl', 
