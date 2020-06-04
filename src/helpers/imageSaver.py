@@ -29,8 +29,8 @@ def upload_to_aws(data, s3_file):
         url = "https://%s.s3.%s.amazonaws.com/%s" % (BUCKET,location, fileName)
         print("Upload Successful", h)
         try:
-            #os.remove(new_path)
-            pass
+            os.remove(new_path)
+            
         except:
             print("Error in removing image")
             print(url);
