@@ -2,6 +2,7 @@ import boto3
 from botocore.exceptions import NoCredentialsError
 import base64
 import os
+from PIL import Image
 
 ACCESS_KEY = os.environ.get('ACCESS_KEY')
 SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -14,6 +15,10 @@ def upload_to_aws(data, s3_file):
     print(new_path)
     with open(new_path, "wb") as fh:
             fh.write(base64.b64decode(data))
+    image = Image.open(new_path)
+    # x, y = image.size
+    # image.resize((int(x//6),int(y//6)),Image.ANTIALIAS)
+    image.save(new_path,quality=20,optimize=True)
     s3 = boto3.client('s3', aws_access_key_id=ACCESS_KEY,
                       aws_secret_access_key=SECRET_KEY)
    
@@ -24,9 +29,11 @@ def upload_to_aws(data, s3_file):
         url = "https://%s.s3.%s.amazonaws.com/%s" % (BUCKET,location, fileName)
         print("Upload Successful", h)
         try:
-            os.remove(new_path)
+            #os.remove(new_path)
+            pass
         except:
             print("Error in removing image")
+            print(url);
         return { 'message' : 'Upload Successful', 'imgUrl' : url, 'code' : 1}
     except FileNotFoundError:
         print("The file was not found")
