@@ -48,16 +48,16 @@ class UserModel(db.Model):
     def update(self) -> None:
         db.session.commit()
     
-    def updateFields(self,company,imgUrl,f_name,l_name) -> None:
+    def updateFields(self,company,f_name,l_name) -> None:
+        print(company, f_name, l_name);
         if(f_name):
             self.f_name = f_name
         if(l_name):
             self.l_name = l_name
-        if(imgUrl):
-            self.imgUrl = imgUrl
         if(company):
             self.company = company
         self.update()
+       
 
 
     def delete_from_db(self) -> None:

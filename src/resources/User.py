@@ -27,7 +27,7 @@ _user_parser.add_argument('email',
 _user_details_parser = reqparse.RequestParser()
 _user_details_parser.add_argument('imgUrl', 
     type = str,
-    required = True,
+    required = False,
     
  )
 _user_details_parser.add_argument('f_name', 
@@ -121,8 +121,9 @@ class User(Resource):
         if user is None:
             return {'message' : 'User do not exist'}, 404
         data = _user_details_parser.parse_args()
+       
         try:
-            user.updateFields(**data)
+            user.updateFields(data['company'], data['f_name'], data['l_name'])
             return {'message' : 'User fields updated successfully'} , 201
         except:
             return {'message' : 'Error occurred while updating user field'} , 400
