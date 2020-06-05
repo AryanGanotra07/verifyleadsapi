@@ -30,7 +30,7 @@ def upload_to_aws(data, s3_file):
         print("Upload Successful", h)
         try:
             os.remove(new_path)
-            
+            #pass
         except:
             print("Error in removing image")
             print(url);

@@ -28,8 +28,26 @@ _user_details_parser = reqparse.RequestParser()
 _user_details_parser.add_argument('imgUrl', 
     type = str,
     required = True,
-    help = "This field cannot be blank"
+    
  )
+_user_details_parser.add_argument('f_name', 
+    type = str,
+    required = False,
+   
+ )
+_user_details_parser.add_argument('l_name', 
+    type = str,
+    required = False,
+    
+ )
+_user_details_parser.add_argument('company', 
+    type = str,
+    required = False,
+   
+ )
+ 
+ 
+ 
 
 
 class UserRegister(Resource):
@@ -80,17 +98,38 @@ class User(Resource):
     @classmethod
     @jwt_required
     def post(cls, user_id : int):
+        print("got request",user_id)
         user = UserModel.find_by_id(user_id)
         if user is None:
-            return {'message' : 'User do not exist'}, 400
+            return {'message' : 'User do not exist'}, 404
         data = _user_details_parser.parse_args()
         imgUrl = data['imgUrl']
-        resp = upload_to_aws(imgUrl, str(user.id)) 
+        imgData = (imgUrl.split(','))[1]
+        # print(imgData)
+        # print("uploading to aws");
+        resp = upload_to_aws(imgData, str(user.id)) 
         if (resp['code'] == 1):
             user.imgUrl = resp['imgUrl']
             user.update()
             return resp, 201
         return resp, 400
+    
+    @classmethod
+    @jwt_required
+    def put(cls, user_id : int):
+        user = UserModel.find_by_id(user_id)
+        if user is None:
+            return {'message' : 'User do not exist'}, 404
+        data = _user_details_parser.parse_args()
+        try:
+            user.updateFields(**data)
+            return {'message' : 'User fields updated successfully'} , 201
+        except:
+            return {'message' : 'Error occurred while updating user field'} , 400
+
+
+        
+
         
         
 
