@@ -81,7 +81,7 @@ class User(Resource):
         user = UserModel.find_by_id(user_id)
         if not user:
             return {'message', 'user not found'} , 404
-        return user.json();
+        return user_schema.dump(user), 201
     
     @classmethod
     @jwt_required
@@ -105,7 +105,7 @@ class User(Resource):
         data = _user_details_parser.parse_args()
         imgUrl = data['imgUrl']
         imgData = (imgUrl.split(','))[1]
-        # print(imgData)
+        print(imgData)
         # print("uploading to aws");
         resp = upload_to_aws(imgData, str(user.id)) 
         if (resp['code'] == 1):
@@ -154,10 +154,10 @@ class UserLogin(Resource):
             return {
                 'access_token' : access_token,
                 'refresh_token' : refresh_token,
-                'user' : user_schema.dump(user),
-                # 'recents' : user_many_schema.dump(recents)
+                'id' : user.id,
+               
 
-            }, 200
+            }, 201
             print(4)
         return {'message' : 'Return invalid credentials'}, 401
 

@@ -28,12 +28,12 @@ class UserModel(db.Model):
     emailleads = db.relationship('EmailModel',secondary = links ,backref = db.backref('users', lazy=True))
     isAdmin = db.Column(db.Boolean, nullable = False, default = False)
 
-    def __init__(self, username, password,isAdmin = False):
+    def __init__(self, username,email, password,isAdmin = False):
         """
         Class constructor
         """
         self.username = username
-        #self.email = email
+        self.email = email
         self.password = self.__generate_hash(password)
         self.created_at = datetime.datetime.utcnow()
         self.modified_at = datetime.datetime.utcnow()
@@ -71,9 +71,27 @@ class UserModel(db.Model):
     @staticmethod
     def get_recent_accounts() -> List["UserModel"]:
         current_date = datetime.datetime.utcnow()
-        from_date = current_date - datetime.timedelta(days = 7)
-        recents = UserModel.query.with_entities(UserModel.created_at).filter(UserModel.created_at >= from_date).all()
-        return recents
+        from_date = current_date - datetime.timedelta(days = 50)
+        sql  = "SELECT date(created_at), count(created_at) as total_count FROM users WHERE created_at >= '{from_date}' GROUP BY date(created_at) ORDER BY date(created_at) ASC".format(from_date = from_date)
+        recents = db.engine.execute(sql)
+        sqlCount = "SELECT count(id) FROM users"
+        total = db.engine.execute(sqlCount).fetchone()
+        total = total[0]
+        dates = []
+        counts = []
+        for recent in recents.fetchall():
+            # result.append({
+            #     'date' : str(recent[0]),
+            #     'count' : recent[1]
+            # });
+            dates.append(str(recent[0]))
+            counts.append(recent[1])
+        result = {
+            'labels' : dates,
+            'counts' : counts,
+            'total' : total
+        }
+        return result
 
 
     @staticmethod

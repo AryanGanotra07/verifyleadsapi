@@ -17,6 +17,7 @@ from src.shared.Authentication import identity, authenticate
 from src.resources.Support import Support, SupportList
 from src.extensions import db, bcrypt, ma, socketio
 from flask_socketio import SocketIO,send
+from src.resources.Graph import Graph
 
 import os
 
@@ -107,6 +108,7 @@ def create_app():
   api.add_resource(Support, '/support')
   api.add_resource(SupportList, '/support/<string:query>')
   api.add_resource(EmailList, '/email/all')
+  api.add_resource(Graph, '/admin/graph/all')
 
   #####################
   # existing code remain #
