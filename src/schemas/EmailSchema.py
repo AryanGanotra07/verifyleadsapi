@@ -1,10 +1,13 @@
 from src.extensions import ma
 from src.models.EmailModel import EmailModel
-from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
+from marshmallow_sqlalchemy import SQLAlchemyAutoSchema, fields
+from src.schemas.UserSchema import UserSchema
 class EmailSchema(SQLAlchemyAutoSchema):
   class Meta:
     model = EmailModel
     include_fk = False
+  # users = fields.Nested(UserSchema, many = True)
+
 
   """
   id = fields.Int(dump_only=True)

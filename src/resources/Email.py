@@ -132,4 +132,15 @@ class EmailFinder(Resource):
         from src.resources.Tasks import save_email_to_db
         save_email_to_db.delay(response, user_id)
         return (email_schema.dump(email)) , 201
+
+class EmailFromDb(Resource):
+    @classmethod
+    @jwt_required
+    def get(cls, email_id):
+        claims = get_jwt_claims()
+        print(claims)
+        if not claims['isAdmin']:
+             return {'message' : 'Admin priviledge required'} , 401
+        return email_schema.dump(EmailModel.find_email_by_id(email_id))
+
         

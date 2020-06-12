@@ -7,6 +7,7 @@ from .EmailModel import EmailSchema
 from typing import Dict, List, Union
 from src.models.EmailModel import EmailJSON
 from src.helpers.dbhelper import links
+from sqlalchemy import desc
 UserJSON = Dict[str, Union[List[EmailJSON],str, int]]
 
 
@@ -66,7 +67,7 @@ class UserModel(db.Model):
 
     @staticmethod
     def get_all_users() -> List["UserModel"]:
-        return UserModel.query.all()
+        return UserModel.query.with_entities(UserModel.id, UserModel.username, UserModel.email,UserModel.company, UserModel.created_at).order_by(desc(UserModel.created_at)).all()
     
     @staticmethod
     def get_recent_accounts() -> List["UserModel"]:

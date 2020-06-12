@@ -2,6 +2,7 @@ from src.extensions import db
 import datetime
 from marshmallow import fields, Schema
 from typing import Dict, List, Union
+from sqlalchemy import desc
 
 EmailJSON = Dict[str, Union[int, str]]
 
@@ -42,7 +43,7 @@ class EmailModel(db.Model):
     
     @staticmethod
     def find_all_emails() -> List["EmailModel"]:
-        return EmailModel.query.all()
+        return EmailModel.query.with_entities(EmailModel.id, EmailModel.username, EmailModel.email,EmailModel.domain, EmailModel.modified_at, EmailModel.message).order_by(desc(EmailModel.modified_at)).all()
   
     @staticmethod
     def find_email_by_id(id : int) -> "EmailModel":

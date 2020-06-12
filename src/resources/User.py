@@ -176,5 +176,16 @@ class UserLogout(Resource):
         BLACKLIST.add(jti)
         return {'message' : 'successfully logged out'}
 
+class UserList(Resource):
+    @classmethod
+    @jwt_required
+    def get(cls):
+        claims = get_jwt_claims()
+        if not claims['isAdmin']:
+             return {'message' : 'Admin priviledge required'} , 401
+        return user_many_schema.dump(UserModel.get_all_users())
+            
+
+
 
 
