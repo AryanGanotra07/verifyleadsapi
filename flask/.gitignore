@@ -16,3 +16,4 @@ migrations/script.py.mako
 migrations/README
 migrations/env.py
 migrations/alembic.ini
+.rdb

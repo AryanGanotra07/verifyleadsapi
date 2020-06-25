@@ -124,6 +124,7 @@ def create_app():
     """
     example endpoint
     """
+    print("Called");
     return render_template("home.html", content = "https://verifyleads.io")
   return app
 
