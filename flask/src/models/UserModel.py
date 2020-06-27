@@ -99,8 +99,9 @@ class UserModel(db.Model):
     def create_admin()->None:
         adminUsername = os.environ.get("ADMIN_USERNAME")
         adminPassword = os.environ.get("ADMIN_PASSWORD")
+        adminEmail = os.environ.get("ADMIN_EMAIL")
         if not UserModel.find_by_username(adminUsername):
-            user = UserModel(adminUsername, adminPassword, True)
+            user = UserModel(adminUsername,adminEmail, adminPassword, True)
             user.save_to_db()
 
     @classmethod

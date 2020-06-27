@@ -1,0 +1,41 @@
+*** Starting uWSGI 2.0.19.1 (64bit) on [Sat Jun 27 14:58:03 2020] ***
+compiled with version: 7.5.0 on 27 June 2020 08:40:14
+os: Linux-5.3.0-1023-aws #25~18.04.1-Ubuntu SMP Fri Jun 5 15:18:30 UTC 2020
+nodename: verifyleads.io
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/ubuntu/api/verifyleadsapi/flask
+detected binary path: /home/ubuntu/api/verifyleadsapi/flask/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+your processes number limit is 3739
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /home/ubuntu/api/verifyleadsapi/flask/socket.sock fd 3
+Python version: 3.6.9 (default, Apr 18 2020, 01:56:04)  [GCC 8.4.0]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x55fa3832d720
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 437520 bytes (427 KB) for 5 cores
+*** Operational MODE: preforking ***
+/home/ubuntu/api/verifyleadsapi/flask/src/static
+/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py:834: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55fa3832d720 pid: 15851 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 15851)
+spawned uWSGI worker 1 (pid: 15873, cores: 1)
+spawned uWSGI worker 2 (pid: 15874, cores: 1)
+spawned uWSGI worker 3 (pid: 15875, cores: 1)
+spawned uWSGI worker 4 (pid: 15876, cores: 1)
+spawned uWSGI worker 5 (pid: 15877, cores: 1)
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] spawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+[uwsgi-daemons] found changed pid for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 15879 new_pid: 15880)
+[pid: 15873|app: 0|req: 1/1] 103.216.177.111 () {54 vars in 1008 bytes} [Sat Jun 27 14:58:14 2020] GET /admin/users/all => generated 44 bytes in 103 msecs (HTTP/1.1 401) 3 headers in 113 bytes (1 switches on core 0)
+Called
+[pid: 15877|app: 0|req: 1/2] 103.216.177.111 () {52 vars in 947 bytes} [Sat Jun 27 14:58:17 2020] GET / => generated 290 bytes in 76 msecs (HTTP/1.1 200) 3 headers in 112 bytes (1 switches on core 0)
