@@ -1,7 +1,7 @@
 
 #src/app.py
 
-from flask import Flask, jsonify, render_template,send_from_directory
+from flask import Flask, jsonify, render_template,send_from_directory, request
 
 from src.config import app_config
 # from src.models import db, bcrypt # add this new line
@@ -45,7 +45,7 @@ def create_app():
 
 
 
-  CORS(app)
+  # cors = CORS(app, resources={r"/email/*": {"origins": "https://verifyleads.io"}})
 
   # initializing bcrypt
   # bcrypt.init_app(app) # add this line
@@ -63,6 +63,14 @@ def create_app():
   
   api = Api(app)
   jwt = JWTManager(app)
+  @app.after_request
+  def after_request(response):
+      white_origin= ['https://verifyleads.io','http://localhost:3000', 'https://app.verifyleads.io']
+      if request.headers['Origin'] in white_origin:
+        response.headers['Access-Control-Allow-Origin'] = request.headers['Origin'] 
+        response.headers['Access-Control-Allow-Methods'] = 'PUT,GET,POST,DELETE'
+        response.headers['Access-Control-Allow-Headers'] = 'Content-Type,Authorization'
+      return response
 
   
 
