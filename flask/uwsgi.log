@@ -3435,3 +3435,509 @@ open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
 open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
 open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
 [uwsgi-daemons] found changed pid for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1165 new_pid: 1166)
+SIGINT/SIGQUIT received...killing workers...
+subprocess 1165 exited by signal 15
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+worker 5 buried after 1 seconds
+goodbye to uWSGI.
+VACUUM: unix socket /home/ubuntu/api/verifyleadsapi/flask/socket.sock removed.
+/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py:834: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py:834: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+
+worker: Warm shutdown (MainProcess)
+
+worker: Warm shutdown (MainProcess)
+/home/ubuntu/api/verifyleadsapi/flask/src/static
+/home/ubuntu/api/verifyleadsapi/flask/src/static
+ 
+ -------------- celery@verifyleads.io v4.4.6 (cliffs)
+--- ***** ----- 
+-- ******* ---- Linux-5.3.0-1030-aws-x86_64-with-Ubuntu-18.04-bionic 2020-07-24 15:45:18
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         src.app:0x7f1e5b0193c8
+- ** ---------- .> transport:   redis://localhost:6379//
+- ** ---------- .> results:     redis://localhost:6379/
+- *** --- * --- .> concurrency: 1 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+*** Starting uWSGI 2.0.19.1 (64bit) on [Fri Jul 24 15:50:52 2020] ***
+compiled with version: 7.5.0 on 27 June 2020 08:40:14
+os: Linux-5.3.0-1030-aws #32~18.04.1-Ubuntu SMP Tue Jun 30 23:04:16 UTC 2020
+nodename: verifyleads.io
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/ubuntu/api/verifyleadsapi/flask
+detected binary path: /home/ubuntu/api/verifyleadsapi/flask/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+your processes number limit is 3802
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /home/ubuntu/api/verifyleadsapi/flask/socket.sock fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x5570c7320720
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 437520 bytes (427 KB) for 5 cores
+*** Operational MODE: preforking ***
+Traceback (most recent call last):
+  File "./run.py", line 2, in <module>
+    from src.app import app
+  File "./src/app.py", line 14, in <module>
+    from src.resources.User import UserLogin, RefreshToken, UserRegister, UserLogout, User, UserList
+  File "./src/resources/User.py", line 3, in <module>
+    from src.models.UserModel import UserModel
+  File "./src/models/UserModel.py", line 3, in <module>
+    from src.extensions import db
+  File "./src/extensions.py", line 4, in <module>
+    from flask_limiter import Limiter
+ModuleNotFoundError: No module named 'flask_limiter'
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 1595)
+spawned uWSGI worker 1 (pid: 1616, cores: 1)
+spawned uWSGI worker 2 (pid: 1617, cores: 1)
+spawned uWSGI worker 3 (pid: 1618, cores: 1)
+spawned uWSGI worker 4 (pid: 1619, cores: 1)
+spawned uWSGI worker 5 (pid: 1620, cores: 1)
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] spawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1622 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+--- no python application found, check your startup logs for errors ---
+[pid: 1616|app: -1|req: -1/1] 103.216.177.111 () {52 vars in 980 bytes} [Fri Jul 24 15:50:55 2020] GET / => generated 21 bytes in 1 msecs (HTTP/1.1 500) 2 headers in 83 bytes (1 switches on core 0)
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1622 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1628 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1628 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1632 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1632 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1637 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1637 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1641 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1641 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1645 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1645 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1650 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1650 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1654 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1654 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1660 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1660 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1665 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1665 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1669 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1669 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1673 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1673 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1678 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1678 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1682 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1682 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1686 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1686 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1691 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1691 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1695 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+--- no python application found, check your startup logs for errors ---
+[pid: 1616|app: -1|req: -1/2] 103.216.177.111 () {54 vars in 1004 bytes} [Fri Jul 24 15:53:41 2020] GET / => generated 21 bytes in 0 msecs (HTTP/1.1 500) 2 headers in 83 bytes (0 switches on core 0)
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1695 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1699 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1699 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1704 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1704 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1720 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+SIGINT/SIGQUIT received...killing workers...
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+worker 5 buried after 1 seconds
+goodbye to uWSGI.
+VACUUM: unix socket /home/ubuntu/api/verifyleadsapi/flask/socket.sock removed.
+*** Starting uWSGI 2.0.19.1 (64bit) on [Fri Jul 24 15:54:09 2020] ***
+compiled with version: 7.5.0 on 27 June 2020 08:40:14
+os: Linux-5.3.0-1030-aws #32~18.04.1-Ubuntu SMP Tue Jun 30 23:04:16 UTC 2020
+nodename: verifyleads.io
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/ubuntu/api/verifyleadsapi/flask
+detected binary path: /home/ubuntu/api/verifyleadsapi/flask/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+your processes number limit is 3802
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /home/ubuntu/api/verifyleadsapi/flask/socket.sock fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x5601b1e3d720
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 437520 bytes (427 KB) for 5 cores
+*** Operational MODE: preforking ***
+Traceback (most recent call last):
+  File "./run.py", line 2, in <module>
+    from src.app import app
+  File "./src/app.py", line 14, in <module>
+    from src.resources.User import UserLogin, RefreshToken, UserRegister, UserLogout, User, UserList
+  File "./src/resources/User.py", line 3, in <module>
+    from src.models.UserModel import UserModel
+  File "./src/models/UserModel.py", line 3, in <module>
+    from src.extensions import db
+  File "./src/extensions.py", line 4, in <module>
+    from flask_limiter import Limiter
+ModuleNotFoundError: No module named 'flask_limiter'
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 1727)
+spawned uWSGI worker 1 (pid: 1747, cores: 1)
+spawned uWSGI worker 2 (pid: 1748, cores: 1)
+spawned uWSGI worker 3 (pid: 1749, cores: 1)
+spawned uWSGI worker 4 (pid: 1750, cores: 1)
+spawned uWSGI worker 5 (pid: 1751, cores: 1)
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] spawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1753 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+--- no python application found, check your startup logs for errors ---
+[pid: 1747|app: -1|req: -1/1] 103.216.177.111 () {54 vars in 1011 bytes} [Fri Jul 24 15:54:19 2020] GET / => generated 21 bytes in 1 msecs (HTTP/1.1 500) 2 headers in 83 bytes (1 switches on core 0)
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1753 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1787 exited with code 1
+--- no python application found, check your startup logs for errors ---
+[pid: 1747|app: -1|req: -1/2] 103.216.177.111 () {54 vars in 1011 bytes} [Fri Jul 24 15:54:20 2020] GET / => generated 21 bytes in 0 msecs (HTTP/1.1 500) 2 headers in 83 bytes (0 switches on core 0)
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
