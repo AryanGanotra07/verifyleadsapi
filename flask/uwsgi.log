@@ -4503,3 +4503,10 @@ Fri Jul 24 16:27:44 2020 - SIGPIPE: writing to a closed pipe/socket/fd (probably
 Fri Jul 24 16:27:44 2020 - uwsgi_response_writev_headers_and_body_do(): Broken pipe [core/writer.c line 306] during GET /email/aryan@machaao.com (103.216.177.111)
 OSError: write error
 [pid: 2141|app: 0|req: 1/6] 103.216.177.111 () {52 vars in 907 bytes} [Fri Jul 24 16:16:48 2020] GET /email/aryan@machaao.com => generated 0 bytes in 655582 msecs (HTTP/1.1 200) 5 headers in 0 bytes (0 switches on core 0)
+Done {'code': 6, 'message': '[Errno 101] Network is unreachable', 'email': 'aryan@machaao.com', 'domain': 'machaao.com', 'username': 'aryan'}
+finding email by address
+Saving to db
+Fri Jul 24 16:28:50 2020 - SIGPIPE: writing to a closed pipe/socket/fd (probably the client disconnected) on request /email/aryan@machaao.com (ip 103.216.177.111) !!!
+Fri Jul 24 16:28:50 2020 - uwsgi_response_writev_headers_and_body_do(): Broken pipe [core/writer.c line 306] during GET /email/aryan@machaao.com (103.216.177.111)
+OSError: write error
+[pid: 2145|app: 0|req: 1/7] 103.216.177.111 () {52 vars in 907 bytes} [Fri Jul 24 16:17:56 2020] GET /email/aryan@machaao.com => generated 0 bytes in 653651 msecs (HTTP/1.1 200) 5 headers in 0 bytes (0 switches on core 0)
