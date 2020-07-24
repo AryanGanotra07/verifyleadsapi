@@ -5,8 +5,8 @@ from src.models.UserModel import UserModel
 import datetime
 from src.verifier.EmailVerifier import EmailVerifier
 from src.schemas.EmailSchema import EmailSchema
-from flask_cors import cross_origin
-from flask_limiter import Limiter
+# from flask_cors import cross_origin
+# from flask_limiter import Limiter
 from src.extensions import limiter
 #make constants for errors
 email_schema = EmailSchema()
@@ -41,7 +41,7 @@ def save_email_to_db(response):
             # email_from_db.owner_id = user_id
             email_from_db.save_to_db()
 class Email(Resource):
-    decorators=[limiter.limit("4/minute")]
+    # decorators=[limiter.limit("4/minute")]
     # parser = reqparse.RequestParser()
     # parser.add_argument('code',
     #         type = int,
@@ -133,7 +133,7 @@ class EmailList(Resource) :
 
 
 class EmailFinder(Resource):
-    decorators=[limiter.limit("2/minute")]
+    # decorators=[limiter.limit("2/minute")]
     @classmethod
     
     def get(cls):
