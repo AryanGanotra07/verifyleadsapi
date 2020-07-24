@@ -3941,3 +3941,278 @@ open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
 open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
 open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
 open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1787 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1794 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1794 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1801 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1801 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1811 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1811 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1815 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1815 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1831 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1831 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1838 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1838 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1842 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1842 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1846 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1846 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1853 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1853 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+Error: 
+Unable to load celery application.
+The module flask_limiter was not found.
+
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+subprocess 1857 exited with code 1
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] found changed pidfile for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1857 new_pid: -1)
+[uwsgi-daemons] respawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+SIGINT/SIGQUIT received...killing workers...
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+worker 5 buried after 1 seconds
+goodbye to uWSGI.
+VACUUM: unix socket /home/ubuntu/api/verifyleadsapi/flask/socket.sock removed.
+*** Starting uWSGI 2.0.19.1 (64bit) on [Fri Jul 24 15:56:11 2020] ***
+compiled with version: 7.5.0 on 27 June 2020 08:40:14
+os: Linux-5.3.0-1030-aws #32~18.04.1-Ubuntu SMP Tue Jun 30 23:04:16 UTC 2020
+nodename: verifyleads.io
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/ubuntu/api/verifyleadsapi/flask
+detected binary path: /home/ubuntu/api/verifyleadsapi/flask/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+your processes number limit is 3802
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /home/ubuntu/api/verifyleadsapi/flask/socket.sock fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x55b1b5c75720
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 437520 bytes (427 KB) for 5 cores
+*** Operational MODE: preforking ***
+/home/ubuntu/api/verifyleadsapi/flask/src/static
+/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py:834: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+WSGI app 0 (mountpoint='') ready in 0 seconds on interpreter 0x55b1b5c75720 pid: 1882 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 1882)
+spawned uWSGI worker 1 (pid: 1907, cores: 1)
+spawned uWSGI worker 2 (pid: 1908, cores: 1)
+spawned uWSGI worker 3 (pid: 1909, cores: 1)
+spawned uWSGI worker 4 (pid: 1910, cores: 1)
+spawned uWSGI worker 5 (pid: 1911, cores: 1)
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] spawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+[uwsgi-daemons] found changed pid for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 1913 new_pid: 1914)
+Called
+Traceback (most recent call last):
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask_restful/__init__.py", line 272, in error_router
+    return original_handler(e)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 1953, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 1970, in finalize_request
+    response = self.process_response(response)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 2267, in process_response
+    response = handler(response)
+  File "./src/app.py", line 77, in after_request
+    if request.headers['Origin'] in white_origin:
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/werkzeug/datastructures.py", line 1463, in __getitem__
+    return _unicodify_header_value(self.environ["HTTP_" + key])
+KeyError: 'HTTP_ORIGIN'
+[pid: 1910|app: 0|req: 1/1] 103.216.177.111 () {54 vars in 1011 bytes} [Fri Jul 24 15:56:18 2020] GET / => generated 0 bytes in 217 msecs (HTTP/1.1 500) 0 headers in 0 bytes (1 switches on core 0)
+Called
+Traceback (most recent call last):
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask_restful/__init__.py", line 272, in error_router
+    return original_handler(e)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 1953, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 1970, in finalize_request
+    response = self.process_response(response)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 2267, in process_response
+    response = handler(response)
+  File "./src/app.py", line 77, in after_request
+    if request.headers['Origin'] in white_origin:
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/werkzeug/datastructures.py", line 1463, in __getitem__
+    return _unicodify_header_value(self.environ["HTTP_" + key])
+KeyError: 'HTTP_ORIGIN'
+[pid: 1907|app: 0|req: 1/2] 103.216.177.111 () {54 vars in 1011 bytes} [Fri Jul 24 15:56:19 2020] GET / => generated 0 bytes in 164 msecs (HTTP/1.1 500) 0 headers in 0 bytes (0 switches on core 0)
