@@ -1,4 +1,6 @@
 flask/migrations/
+
 flask/dump.rdb
+
 *.rdb
-*.rdb
+
