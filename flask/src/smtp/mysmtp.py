@@ -310,12 +310,12 @@ class SMTP:
             self._print_debug('connect: to', (host, port), self.source_address)
         # return socket.create_connection((host, port), timeout,
         #                                 self.source_address)
-        s = None
-        if self.proxy and self.proxy.port:
-            s = socks.create_connection((host, port), timeout,self.source_address , socks.SOCKS5, 
-            "localhost", self.proxy.port)
-        else:
-            s = socket.create_connection((host, port), timeout,
+        # s = None
+        # if self.proxy and self.proxy.port:
+        #     s = socks.create_connection((host, port), timeout,self.source_address , socks.SOCKS5, 
+        #     "localhost", self.proxy.port)
+        # else:
+        s = socket.create_connection((host, port), timeout,
                                         self.source_address)
         
         return s

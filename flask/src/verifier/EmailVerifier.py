@@ -73,7 +73,7 @@ class EmailVerifier:
                 continue
             try:
                 (code, msg) = server.helo(server.proxy.domain)
-                (code, msg) = server.docmd('MAIL FROM:', '<{}>'.format(server.proxy.email))
+                (code, msg) = server.docmd('MAIL FROM:', '<{}>'.format("admin@verifyleads.io"))
                 print(code,msg)
                 if 200 <= code <= 299:
                     print('<{}>'.format(email))
