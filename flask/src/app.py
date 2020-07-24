@@ -15,9 +15,11 @@ from src.resources.User import UserLogin, RefreshToken, UserRegister, UserLogout
 from src.resources.Email import Email, EmailFinder, EmailList, EmailFromDb
 from src.shared.Authentication import identity, authenticate
 from src.resources.Support import Support, SupportList
-from src.extensions import db, bcrypt, ma, socketio
+from src.extensions import db, bcrypt, ma, socketio, limiter
 from flask_socketio import SocketIO,send
 from src.resources.Graph import Graph
+# from flask_limiter import Limiter
+# from flask_limiter.util import get_remote_address
 
 import os
 
@@ -42,6 +44,12 @@ def create_app():
       CELERY_BROKER_URL='redis://localhost:6379',
       CELERY_RESULT_BACKEND='redis://localhost:6379'
   )
+
+#   limiter = Limiter(
+#     app,
+#     key_func=get_remote_address,
+#     default_limits=["100 per day", "50 per hour"]
+# )
 
 
 
@@ -111,6 +119,7 @@ def create_app():
   api.add_resource(UserLogin, '/login')
   api.add_resource(RefreshToken, '/refresh')
   api.add_resource(UserLogout , '/logout')
+  
   api.add_resource(Email,'/email/<string:emailAddress>')
   api.add_resource(EmailFinder,'/email')
   api.add_resource(Support, '/support')
@@ -144,6 +153,8 @@ def extensions(app):
 
   db.init_app(app) # add this line
   ma.init_app(app)
+  limiter.init_app(app)
+  
   @app.before_first_request
   def create_tables():
     db.create_all()

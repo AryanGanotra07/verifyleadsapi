@@ -23,3 +23,4 @@ eventlet
 pysocks
 boto3
 Pillow
+Flask-Limiter
