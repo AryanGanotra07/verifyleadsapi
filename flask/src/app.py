@@ -54,7 +54,7 @@ def create_app():
 
 
 
-  cors = CORS(app, resources={r"/*": {"origins": "https://verifyleads.io"}})
+  # cors = CORS(app, resources={r"/*": {"origins": "https://verifyleads.io"}})
 
 
   # initializing bcrypt
