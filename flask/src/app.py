@@ -73,14 +73,14 @@ def create_app():
   
   api = Api(app)
   jwt = JWTManager(app)
-  @app.after_request
-  def after_request(response):
-      white_origin= ['https://verifyleads.io','http://localhost:3000', 'https://app.verifyleads.io', 'https://www.verifyleads.io',]
-      if request.headers['Origin'] in white_origin:
-        response.headers['Access-Control-Allow-Origin'] = request.headers['Origin'] 
-        response.headers['Access-Control-Allow-Methods'] = 'PUT,GET,POST,DELETE'
-        response.headers['Access-Control-Allow-Headers'] = 'Origin,Content-Type,Authorization,X-Requested-With'
-      return response
+  # @app.after_request
+  # def after_request(response):
+  #     white_origin= ['https://verifyleads.io','http://localhost:3000', 'https://app.verifyleads.io', 'https://www.verifyleads.io',]
+  #     if request.headers['Origin'] in white_origin:
+  #       response.headers['Access-Control-Allow-Origin'] = request.headers['Origin'] 
+  #       response.headers['Access-Control-Allow-Methods'] = 'PUT,GET,POST,DELETE'
+  #       response.headers['Access-Control-Allow-Headers'] = 'Origin,Content-Type,Authorization,X-Requested-With'
+  #     return response
 
   
 
