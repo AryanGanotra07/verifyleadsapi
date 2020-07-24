@@ -4216,3 +4216,290 @@ Traceback (most recent call last):
     return _unicodify_header_value(self.environ["HTTP_" + key])
 KeyError: 'HTTP_ORIGIN'
 [pid: 1907|app: 0|req: 1/2] 103.216.177.111 () {54 vars in 1011 bytes} [Fri Jul 24 15:56:19 2020] GET / => generated 0 bytes in 164 msecs (HTTP/1.1 500) 0 headers in 0 bytes (0 switches on core 0)
+SIGINT/SIGQUIT received...killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+worker 5 buried after 1 seconds
+goodbye to uWSGI.
+VACUUM: unix socket /home/ubuntu/api/verifyleadsapi/flask/socket.sock removed.
+/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py:834: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py:834: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+
+worker: Warm shutdown (MainProcess)
+
+worker: Warm shutdown (MainProcess)
+/home/ubuntu/api/verifyleadsapi/flask/src/static
+/home/ubuntu/api/verifyleadsapi/flask/src/static
+ 
+ -------------- celery@verifyleads.io v4.4.6 (cliffs)
+--- ***** ----- 
+-- ******* ---- Linux-5.3.0-1030-aws-x86_64-with-Ubuntu-18.04-bionic 2020-07-24 15:56:12
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         src.app:0x7f202770d908
+- ** ---------- .> transport:   redis://localhost:6379//
+- ** ---------- .> results:     redis://localhost:6379/
+- *** --- * --- .> concurrency: 1 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+*** Starting uWSGI 2.0.19.1 (64bit) on [Fri Jul 24 16:06:58 2020] ***
+compiled with version: 7.5.0 on 27 June 2020 08:40:14
+os: Linux-5.3.0-1030-aws #32~18.04.1-Ubuntu SMP Tue Jun 30 23:04:16 UTC 2020
+nodename: verifyleads.io
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/ubuntu/api/verifyleadsapi/flask
+detected binary path: /home/ubuntu/api/verifyleadsapi/flask/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+your processes number limit is 3802
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /home/ubuntu/api/verifyleadsapi/flask/socket.sock fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x5655123c1720
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 437520 bytes (427 KB) for 5 cores
+*** Operational MODE: preforking ***
+/home/ubuntu/api/verifyleadsapi/flask/src/static
+/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py:834: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x5655123c1720 pid: 2025 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 2025)
+spawned uWSGI worker 1 (pid: 2050, cores: 1)
+spawned uWSGI worker 2 (pid: 2051, cores: 1)
+spawned uWSGI worker 3 (pid: 2052, cores: 1)
+spawned uWSGI worker 4 (pid: 2053, cores: 1)
+spawned uWSGI worker 5 (pid: 2054, cores: 1)
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] spawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+[uwsgi-daemons] found changed pid for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 2056 new_pid: 2057)
+Called
+Traceback (most recent call last):
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask_restful/__init__.py", line 272, in error_router
+    return original_handler(e)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 1953, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 1970, in finalize_request
+    response = self.process_response(response)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 2267, in process_response
+    response = handler(response)
+  File "./src/app.py", line 77, in after_request
+    if request.headers['Origin'] in white_origin:
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/werkzeug/datastructures.py", line 1463, in __getitem__
+    return _unicodify_header_value(self.environ["HTTP_" + key])
+KeyError: 'HTTP_ORIGIN'
+[pid: 2054|app: 0|req: 1/1] 103.216.177.111 () {54 vars in 1011 bytes} [Fri Jul 24 16:07:05 2020] GET / => generated 0 bytes in 108 msecs (HTTP/1.1 500) 0 headers in 0 bytes (1 switches on core 0)
+Called
+Traceback (most recent call last):
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask_restful/__init__.py", line 272, in error_router
+    return original_handler(e)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask_cors/extension.py", line 161, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 1953, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 1970, in finalize_request
+    response = self.process_response(response)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 2267, in process_response
+    response = handler(response)
+  File "./src/app.py", line 77, in after_request
+    if request.headers['Origin'] in white_origin:
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/werkzeug/datastructures.py", line 1463, in __getitem__
+    return _unicodify_header_value(self.environ["HTTP_" + key])
+KeyError: 'HTTP_ORIGIN'
+[pid: 2050|app: 0|req: 1/2] 103.216.177.111 () {54 vars in 1011 bytes} [Fri Jul 24 16:07:06 2020] GET / => generated 0 bytes in 84 msecs (HTTP/1.1 500) 0 headers in 0 bytes (0 switches on core 0)
+SIGINT/SIGQUIT received...killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+worker 5 buried after 1 seconds
+goodbye to uWSGI.
+VACUUM: unix socket /home/ubuntu/api/verifyleadsapi/flask/socket.sock removed.
+/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py:834: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py:834: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+
+worker: Warm shutdown (MainProcess)
+
+worker: Warm shutdown (MainProcess)
+/home/ubuntu/api/verifyleadsapi/flask/src/static
+/home/ubuntu/api/verifyleadsapi/flask/src/static
+ 
+ -------------- celery@verifyleads.io v4.4.6 (cliffs)
+--- ***** ----- 
+-- ******* ---- Linux-5.3.0-1030-aws-x86_64-with-Ubuntu-18.04-bionic 2020-07-24 16:07:00
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         src.app:0x7fd2435edfd0
+- ** ---------- .> transport:   redis://localhost:6379//
+- ** ---------- .> results:     redis://localhost:6379/
+- *** --- * --- .> concurrency: 1 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> celery           exchange=celery(direct) key=celery
+                
+
+*** Starting uWSGI 2.0.19.1 (64bit) on [Fri Jul 24 16:14:42 2020] ***
+compiled with version: 7.5.0 on 27 June 2020 08:40:14
+os: Linux-5.3.0-1030-aws #32~18.04.1-Ubuntu SMP Tue Jun 30 23:04:16 UTC 2020
+nodename: verifyleads.io
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 1
+current working directory: /home/ubuntu/api/verifyleadsapi/flask
+detected binary path: /home/ubuntu/api/verifyleadsapi/flask/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+your processes number limit is 3802
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address /home/ubuntu/api/verifyleadsapi/flask/socket.sock fd 3
+Python version: 3.6.9 (default, Jul 17 2020, 12:50:27)  [GCC 8.4.0]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x55ce81aa4720
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 437520 bytes (427 KB) for 5 cores
+*** Operational MODE: preforking ***
+/home/ubuntu/api/verifyleadsapi/flask/src/static
+/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py:834: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0x55ce81aa4720 pid: 2118 (default app)
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 2118)
+spawned uWSGI worker 1 (pid: 2141, cores: 1)
+spawned uWSGI worker 2 (pid: 2142, cores: 1)
+spawned uWSGI worker 3 (pid: 2143, cores: 1)
+spawned uWSGI worker 4 (pid: 2144, cores: 1)
+spawned uWSGI worker 5 (pid: 2145, cores: 1)
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+open("/tmp/celery.pid"): No such file or directory [core/daemons.c line 161]
+[uwsgi-daemons] spawning "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (uid: 1000 gid: 33)
+[uwsgi-daemons] found changed pid for "celery -A src.resources.Tasks worker --pidfile=/tmp/celery.pid" (old_pid: 2147 new_pid: 2148)
+[pid: 2144|app: 0|req: 1/1] 103.216.177.111 () {54 vars in 936 bytes} [Fri Jul 24 16:16:48 2020] OPTIONS /email/aryan@machaao.com => generated 0 bytes in 103 msecs (HTTP/1.1 200) 6 headers in 266 bytes (0 switches on core 0)
+aryan machaao.com
+Attempting to connect to aspmx.l.google.com
+2
+Called
+Traceback (most recent call last):
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 2464, in __call__
+    return self.wsgi_app(environ, start_response)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 2450, in wsgi_app
+    response = self.handle_exception(e)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask_restful/__init__.py", line 272, in error_router
+    return original_handler(e)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 1867, in handle_exception
+    reraise(exc_type, exc_value, tb)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/_compat.py", line 39, in reraise
+    raise value
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 2447, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 1953, in full_dispatch_request
+    return self.finalize_request(rv)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 1970, in finalize_request
+    response = self.process_response(response)
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/flask/app.py", line 2267, in process_response
+    response = handler(response)
+  File "./src/app.py", line 77, in after_request
+    if request.headers['Origin'] in white_origin:
+  File "/home/ubuntu/api/verifyleadsapi/flask/venv/lib/python3.6/site-packages/werkzeug/datastructures.py", line 1463, in __getitem__
+    return _unicodify_header_value(self.environ["HTTP_" + key])
+KeyError: 'HTTP_ORIGIN'
+[pid: 2144|app: 0|req: 2/2] 103.216.177.111 () {54 vars in 1004 bytes} [Fri Jul 24 16:17:37 2020] GET / => generated 0 bytes in 11 msecs (HTTP/1.1 500) 0 headers in 0 bytes (0 switches on core 0)
+[pid: 2144|app: 0|req: 3/3] 103.216.177.111 () {54 vars in 936 bytes} [Fri Jul 24 16:17:56 2020] OPTIONS /email/aryan@machaao.com => generated 0 bytes in 0 msecs (HTTP/1.1 200) 6 headers in 266 bytes (0 switches on core 0)
+aryan machaao.com
+Attempting to connect to aspmx.l.google.com
+3
+Attempting to connect to alt2.aspmx.l.google.com
+0
+Attempting to connect to alt1.aspmx.l.google.com
+4
+[pid: 2144|app: 0|req: 4/4] 103.216.177.111 () {54 vars in 945 bytes} [Fri Jul 24 16:20:50 2020] OPTIONS /email/aryan@machaao.com => generated 0 bytes in 0 msecs (HTTP/1.1 200) 3 headers in 105 bytes (0 switches on core 0)
+Attempting to connect to alt1.aspmx.l.google.com
+4
+aryan gan verifyleads.io
+Called b2
+aryan.gan verifyleads.io
+Done {'code': 0, 'message': 'Unknown Exception: Please check your email format or try again later.', 'email': 'aryan.gan@verifyleads.io', 'domain': 'verifyleads.io', 'username': 'aryan.gan'}
+agan verifyleads.io
+Done {'code': 0, 'message': 'Unknown Exception: Please check your email format or try again later.', 'email': 'agan@verifyleads.io', 'domain': 'verifyleads.io', 'username': 'agan'}
+aryan verifyleads.io
+Done {'code': 0, 'message': 'Unknown Exception: Please check your email format or try again later.', 'email': 'aryan@verifyleads.io', 'domain': 'verifyleads.io', 'username': 'aryan'}
+aryangan verifyleads.io
+Done {'code': 0, 'message': 'Unknown Exception: Please check your email format or try again later.', 'email': 'aryangan@verifyleads.io', 'domain': 'verifyleads.io', 'username': 'aryangan'}
+aryang verifyleads.io
+Done {'code': 0, 'message': 'Unknown Exception: Please check your email format or try again later.', 'email': 'aryang@verifyleads.io', 'domain': 'verifyleads.io', 'username': 'aryang'}
+gan verifyleads.io
+Done {'code': 0, 'message': 'Unknown Exception: Please check your email format or try again later.', 'email': 'gan@verifyleads.io', 'domain': 'verifyleads.io', 'username': 'gan'}
+aryan_gan verifyleads.io
+Done {'code': 0, 'message': 'Unknown Exception: Please check your email format or try again later.', 'email': 'aryan_gan@verifyleads.io', 'domain': 'verifyleads.io', 'username': 'aryan_gan'}
+gana verifyleads.io
+Done {'code': 0, 'message': 'Unknown Exception: Please check your email format or try again later.', 'email': 'gana@verifyleads.io', 'domain': 'verifyleads.io', 'username': 'gana'}
+a_gan verifyleads.io
+Done {'code': 0, 'message': 'Unknown Exception: Please check your email format or try again later.', 'email': 'a_gan@verifyleads.io', 'domain': 'verifyleads.io', 'username': 'a_gan'}
+aryan-gan verifyleads.io
+Done {'code': 0, 'message': 'Unknown Exception: Please check your email format or try again later.', 'email': 'aryan-gan@verifyleads.io', 'domain': 'verifyleads.io', 'username': 'aryan-gan'}
+aryan.g verifyleads.io
+Done {'code': 0, 'message': 'Unknown Exception: Please check your email format or try again later.', 'email': 'aryan.g@verifyleads.io', 'domain': 'verifyleads.io', 'username': 'aryan.g'}
+aryan_g verifyleads.io
+Done {'code': 0, 'message': 'Unknown Exception: Please check your email format or try again later.', 'email': 'aryan_g@verifyleads.io', 'domain': 'verifyleads.io', 'username': 'aryan_g'}
+aryan-g verifyleads.io
+Done {'code': 0, 'message': 'Unknown Exception: Please check your email format or try again later.', 'email': 'aryan-g@verifyleads.io', 'domain': 'verifyleads.io', 'username': 'aryan-g'}
+[pid: 2144|app: 0|req: 5/5] 103.216.177.111 () {50 vars in 942 bytes} [Fri Jul 24 16:21:23 2020] GET /email?fname=aryan&lname=gan&domain=verifyleads.io => generated 325 bytes in 45 msecs (HTTP/1.1 201) 2 headers in 77 bytes (1 switches on core 0)
+Attempting to connect to alt2.aspmx.l.google.com
+5
+Attempting to connect to aspmx2.googlemail.com
+1
+Attempting to connect to aspmx3.googlemail.com
+3
+Attempting to connect to aspmx3.googlemail.com
+3
+Attempting to connect to aspmx2.googlemail.com
+4
+Done {'code': 6, 'message': '[Errno 101] Network is unreachable', 'email': 'aryan@machaao.com', 'domain': 'machaao.com', 'username': 'aryan'}
+finding email by address
+Saving to db
+Fri Jul 24 16:27:44 2020 - SIGPIPE: writing to a closed pipe/socket/fd (probably the client disconnected) on request /email/aryan@machaao.com (ip 103.216.177.111) !!!
+Fri Jul 24 16:27:44 2020 - uwsgi_response_writev_headers_and_body_do(): Broken pipe [core/writer.c line 306] during GET /email/aryan@machaao.com (103.216.177.111)
+OSError: write error
+[pid: 2141|app: 0|req: 1/6] 103.216.177.111 () {52 vars in 907 bytes} [Fri Jul 24 16:16:48 2020] GET /email/aryan@machaao.com => generated 0 bytes in 655582 msecs (HTTP/1.1 200) 5 headers in 0 bytes (0 switches on core 0)
