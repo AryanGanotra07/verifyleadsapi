@@ -1,6 +1,7 @@
 flask/migrations/
 
-flask/dump.rdb
-
+flask/dump.rdb/
+dump.rdb/
 *.rdb
 
+flask/dump.rdb
