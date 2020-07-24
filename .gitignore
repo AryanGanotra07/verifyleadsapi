@@ -1,1 +1,6 @@
 flask/migrations/
+<<<<<<< HEAD
+=======
+flask/dump.rdb
+*.rdb
+>>>>>>> 803faaa7bbcb35fc1164164edd6fda31157f1eaa

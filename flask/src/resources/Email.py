@@ -5,10 +5,43 @@ from src.models.UserModel import UserModel
 import datetime
 from src.verifier.EmailVerifier import EmailVerifier
 from src.schemas.EmailSchema import EmailSchema
+from flask_cors import cross_origin
+from flask_limiter import Limiter
+from src.extensions import limiter
 #make constants for errors
 email_schema = EmailSchema()
 email_all_schema = EmailSchema(many=True)
+def save_email_to_db(response):
+    if response['code'] != 0:
+        email = EmailModel(response['code'], response ['username'],response['domain'], response['email'], response['message'])
+        email_from_db = EmailModel.find_email_by_address(email.email)
+        if ('f_name' in response):
+            print("f_name not null")
+            email.f_name = response['f_name']
+        if ('l_name' in response):
+            email.l_name = response['l_name']
+        if ('m_name' in response):
+            email.m_name = response['m_name']
+        print("Saving to db")
+        #user = UserModel.find_by_id(user_id)
+        if email_from_db is None:
+            #email.users.append(user)
+            email.save_to_db()
+        else:
+            email_from_db.code = email.code
+            email_from_db.message = email.message
+            email_from_db.modified_at = datetime.datetime.utcnow()
+            if (email.f_name):
+                print("f_name not null")
+                email_from_db.f_name = email.f_name
+            if (email.l_name):
+                email_from_db.l_name = email.l_name
+            if(email.m_name):
+                email_from_db.m_name = email.m_name
+            # email_from_db.owner_id = user_id
+            email_from_db.save_to_db()
 class Email(Resource):
+    decorators=[limiter.limit("4/minute")]
     # parser = reqparse.RequestParser()
     # parser.add_argument('code',
     #         type = int,
@@ -24,23 +57,25 @@ class Email(Resource):
     #         help = "This field cannot be left blank")
     
     @classmethod
-    @jwt_required
     #make all these class methods if they are not using self reference
+    # @cross_origin(['https://verifyleads.io'])
+    
     def get(cls, emailAddress : str):
-        print("Called b")
-        claims = get_jwt_claims()
-        print(claims)
-        if not claims['isAdmin']:
-             return {'message' : 'Admin priviledge required'} , 401
-        user_id = get_jwt_identity()
-        print("Called")
         
-        # if email:
+        # print("Called b")
+        # claims = get_jwt_claims()
+        # print(claims)
+        # if not claims['isAdmin']:
+        #      return {'message' : 'Admin priviledge required'} , 401
+        # user_id = get_jwt_identity()
+        # print("Called")
+        
+        # # if email:
         #     return email.json()
         response = EmailVerifier.verify(emailAddress)
         email = EmailModel(response['code'], response ['username'],response['domain'], response['email'], response['message'])
-        from src.resources.Tasks import save_email_to_db
-        save_email_to_db.delay(response, user_id)
+        
+        save_email_to_db(response)
         return (email_schema.dump(email))
     
    
@@ -98,8 +133,9 @@ class EmailList(Resource) :
 
 
 class EmailFinder(Resource):
+    decorators=[limiter.limit("2/minute")]
     @classmethod
-    @jwt_required
+    
     def get(cls):
         first_name = request.args.get('fname')
         last_name = request.args.get('lname')
@@ -107,12 +143,12 @@ class EmailFinder(Resource):
         print(first_name, last_name, domain)
 
         print("Called b2")
-        claims = get_jwt_claims()
-        print(claims)
-        if not claims['isAdmin']:
-             return {'message' : 'Admin priviledge required'} , 401
-        user_id = get_jwt_identity()
-        print("Called")
+        # claims = get_jwt_claims()
+        # print(claims)
+        # if not claims['isAdmin']:
+        #      return {'message' : 'Admin priviledge required'} , 401
+        # user_id = get_jwt_identity()
+        # print("Called")
         
         # if email:
         #     return email.json()
@@ -129,8 +165,7 @@ class EmailFinder(Resource):
         email = EmailModel(response['code'], response ['username'],response['domain'], response['email'], response['message'])
         email.f_name = first_name
         email.l_name = last_name
-        from src.resources.Tasks import save_email_to_db
-        save_email_to_db.delay(response, user_id)
+        save_email_to_db(response)
         return (email_schema.dump(email)) , 201
 
 class EmailFromDb(Resource):

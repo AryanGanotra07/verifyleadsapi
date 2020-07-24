@@ -18,7 +18,7 @@ def async_send_email(data):
     print("Executed")
 
 @celery.task(name='tasks.save_email_to_db')
-def save_email_to_db(response, user_id):
+def save_email_to_db(response):
     if response['code'] != 0:
         email = EmailModel(response['code'], response ['username'],response['domain'], response['email'], response['message'])
         email_from_db = EmailModel.find_email_by_address(email.email)
@@ -30,9 +30,9 @@ def save_email_to_db(response, user_id):
         if ('m_name' in response):
             email.m_name = response['m_name']
         print("Saving to db")
-        user = UserModel.find_by_id(user_id)
-        if email_from_db not in user.emailleads:
-            email.users.append(user)
+        #user = UserModel.find_by_id(user_id)
+        if email_from_db is not None:
+            #email.users.append(user)
             email.save_to_db()
         else:
             email_from_db.code = email.code
